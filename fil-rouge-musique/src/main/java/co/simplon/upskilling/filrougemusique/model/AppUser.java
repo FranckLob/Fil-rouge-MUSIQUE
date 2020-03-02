@@ -1,5 +1,7 @@
 package co.simplon.upskilling.filrougemusique.model;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +14,37 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq_id")
     private Long id;
 
-    @Column(nullable = false)
-    private String nickname;
+    @Column(nullable = false, unique = true)
+    private String nickName;
 
-    private Boolean isAdmin;
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @ManyToMany
+    @JoinTable(
+            name = "appuser-authority",
+            joinColumns = @JoinColumn(name = "appuser-id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    private List<Authority> authorities;
 
     @OneToMany(mappedBy = "appUser")
+    @JsonIgnore
     private List<Publication> publicationList = new ArrayList<>();
 
     public Long getId() {
         return id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getNickName() {
+        return nickName;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Authority> getAuthorities() {
+        return authorities;
     }
 
     public List<Publication> getPublicationList() {
