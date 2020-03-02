@@ -27,7 +27,7 @@ public class Title {
 
 //    private URL snippet;
 
-    @ManyToMany(mappedBy = "titleSet")
+    @OneToMany(mappedBy = "title")
     private Set<Publication> publicationSet = new HashSet<>();
 
     public Long getId() {
