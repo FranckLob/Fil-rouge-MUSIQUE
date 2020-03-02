@@ -41,6 +41,8 @@ public class Publication {
             inverseJoinColumns = @JoinColumn(name = "title_id"))
     private Set<Title> titleSet = new HashSet<>();
 
+    private URL snippet;
+
     public Long getId() {
         return id;
     }
@@ -64,4 +66,7 @@ public class Publication {
     public Set<Title> getTitleSet() {
         return titleSet;
     }
+
+    public URL getSnippet() { return snippet; }
 }
+
