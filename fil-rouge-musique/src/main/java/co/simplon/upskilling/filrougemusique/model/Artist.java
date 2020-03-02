@@ -16,7 +16,7 @@ public class Artist {
 
     private String name;
 
-    @ManyToMany(mappedBy = "artistSet")
+    @OneToMany(mappedBy = "artistSet")
     @JsonIgnore
     private Set<Publication> publicationSet = new HashSet<>();
 
