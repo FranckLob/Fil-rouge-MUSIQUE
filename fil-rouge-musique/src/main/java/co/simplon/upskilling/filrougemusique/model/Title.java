@@ -25,9 +25,9 @@ public class Title {
 
     private String composer;
 
-    private URL snippet;
+//    private URL snippet;
 
-    @ManyToMany(mappedBy = "titleSet")
+    @OneToMany(mappedBy = "title")
     private Set<Publication> publicationSet = new HashSet<>();
 
     public Long getId() {
@@ -54,9 +54,9 @@ public class Title {
         return composer;
     }
 
-    public URL getSnippet() {
-        return snippet;
-    }
+//    public URL getSnippet() {
+//        return snippet;
+//    }
 
     public Set<Publication> getPublicationSet() {
         return publicationSet;

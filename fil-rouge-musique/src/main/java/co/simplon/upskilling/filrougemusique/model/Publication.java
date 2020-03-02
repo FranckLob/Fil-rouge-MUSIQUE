@@ -28,6 +28,8 @@ public class Publication {
     @ManyToOne
     private Title title;
 
+    private URL snippet;
+
     public Long getId() {
         return id;
     }
@@ -51,4 +53,7 @@ public class Publication {
     public Title getTitle() {
         return title;
     }
+
+    public URL getSnippet() { return snippet; }
 }
+
