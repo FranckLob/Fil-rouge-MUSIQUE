@@ -17,6 +17,9 @@ public class AppUser {
     @Column(nullable = false, unique = true)
     private String nickName;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
     @ManyToMany
     @JoinTable(
             name = "appuser-authority",
@@ -36,7 +39,11 @@ public class AppUser {
         return nickName;
     }
 
-    public List<Authority> getAdmin() {
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Authority> getAuthorities() {
         return authorities;
     }
 
