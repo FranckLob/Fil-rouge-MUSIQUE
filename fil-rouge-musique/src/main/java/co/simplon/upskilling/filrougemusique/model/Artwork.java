@@ -18,7 +18,7 @@ public class Artwork {
 
     private String producer;
 
-    @ManyToMany(mappedBy = "artworkSet")
+    @OneToMany(mappedBy = "artwork")
     private Set<Publication> publicationSet=new HashSet<>();
 
     public Long getId() {
