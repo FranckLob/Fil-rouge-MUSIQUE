@@ -17,29 +17,16 @@ public class Publication {
     @ManyToOne
     private AppUser appUser;
 
-    @ManyToMany
-    @JoinTable(
-            name = "publication-artist",
-            joinColumns = @JoinColumn(name = "publication-id"),
-            inverseJoinColumns = @JoinColumn(name = "artist_id"))
-    private Set<Artist> artistSet = new HashSet<>();
+    @ManyToOne
+    private Artist artist;
 
     private Date date;
 
-    @ManyToMany
-    @JoinTable(
-            name = "publication-artwork",
-            joinColumns = @JoinColumn(name = "publication-id"),
-            inverseJoinColumns = @JoinColumn(name = "artwork_id"))
-    private Set<Artwork> artworkSet = new HashSet<>();
+    @ManyToOne
+    private Artwork artwork;
 
-
-    @ManyToMany
-    @JoinTable(
-            name = "publication-title",
-            joinColumns = @JoinColumn(name = "publication-id"),
-            inverseJoinColumns = @JoinColumn(name = "title_id"))
-    private Set<Title> titleSet = new HashSet<>();
+    @ManyToOne
+    private Title title;
 
     private URL snippet;
 
@@ -51,20 +38,20 @@ public class Publication {
         return appUser;
     }
 
-    public Set<Artist> getArtistSet() {
-        return artistSet;
+    public Artist getArtist() {
+        return artist;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public Set<Artwork> getArtworkSet() {
-        return artworkSet;
+    public Artwork getArtwork() {
+        return artwork;
     }
 
-    public Set<Title> getTitleSet() {
-        return titleSet;
+    public Title getTitle() {
+        return title;
     }
 
     public URL getSnippet() { return snippet; }
