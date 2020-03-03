@@ -73,4 +73,4 @@ insert into artist(id,name) values (artist_seq_id.nextval, "Bob Dylan");
 insert into artist(id,name) values (artist_seq_id.nextval, "The Specials");
 insert into artist(id,name) values (artist_seq_id.nextval, "Fred Bueno and his Fuckin Fuckers Band from Bdx");
 
-insert into publication(id,app_user,artist,date,artwork,title,snippet) values (publication_seq_id.nextval,"Andrea","","2020-03-04","",)
+insert into publication(id,app_user,artist,date,artwork,title,snippet) values (publication_seq_id.nextval,"Andrea","","2020-03-04","",);

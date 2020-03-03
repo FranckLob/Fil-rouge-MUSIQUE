@@ -3,9 +3,11 @@ package co.simplon.upskilling.filrougemusique.service;
 import co.simplon.upskilling.filrougemusique.model.Artist;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.repository.ArtistRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ArtistServiceImpl implements ArtistService {
 
     private ArtistRepository artistRepository;
