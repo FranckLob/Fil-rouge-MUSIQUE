@@ -16,7 +16,7 @@ public class Publication {
     @Column(nullable = false)
     @ManyToOne
     private AppUser appUser;
-
+      
     @ManyToOne
     private Artist artist;
 

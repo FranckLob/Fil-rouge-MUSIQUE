@@ -15,6 +15,7 @@ public interface PublicationService {
      *
      * @return the complete list
      */
+
     Page<Publication> getPublications(Integer pageNumber, Integer pageSize);
 
     /**
@@ -22,6 +23,7 @@ public interface PublicationService {
      *
      * @return the filtered list
      */
+
     Page<Publication> getFilteredPublicationsByAppUser(Long appUserId, Integer pageNumber, Integer pageSize);
 
     /**
@@ -29,6 +31,7 @@ public interface PublicationService {
      *
      * @return the filtered list
      */
+
     Page<Publication> getFilteredPublicationsByArtist(Long artistId, Integer pageNumber, Integer pageSize);
 
     /**
@@ -36,6 +39,7 @@ public interface PublicationService {
      *
      * @return the filtered list
      */
+
     Page<Publication> getFilteredPublicationsByArtwork(Long artworkId, Integer pageNumber, Integer pageSize);
 
     /**
@@ -43,6 +47,7 @@ public interface PublicationService {
      *
      * @return the filtered list
      */
+
     Page<Publication> getFilteredPublicationsByTitle(Long titleId, Integer pageNumber, Integer pSize);
 
 //    /**
