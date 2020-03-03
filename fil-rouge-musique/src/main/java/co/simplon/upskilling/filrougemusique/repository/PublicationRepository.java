@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface PublicationRepository extends PagingAndSortingRepository<Publication, Long> {
 
-    Page<Publication> getPublicationsByArtistSetEquals
+//   Page<Publication> getPublicationsByArtistSetEquals
 
     Page<Publication> getPublicationsByAppUser_IdEquals(Long appUserId, Pageable pageable);
 
