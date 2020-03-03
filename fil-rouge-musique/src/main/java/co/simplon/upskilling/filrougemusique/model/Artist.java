@@ -14,9 +14,10 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "artist_seq_id")
     private Long id;
 
+    @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "artistSet")
+    @OneToMany(mappedBy = "artist")
     @JsonIgnore
     private Set<Publication> publicationSet = new HashSet<>();
 

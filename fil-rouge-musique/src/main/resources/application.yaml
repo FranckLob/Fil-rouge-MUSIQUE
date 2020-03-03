@@ -1,5 +1,5 @@
 server:
-  port : 8080
+  port: 8080
   tomcat:
     remote-ip-header: x-forwarded-for
     protocol-header: x-forwarded-proto
@@ -9,19 +9,19 @@ security:
       grant-type: client_credentials
 
 spring:
-  datasource :
-    url : jdbc:postgresql://localhost:5432/shareyourmusic
-    username : db-Andy
-    password : Koala75
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shareyourmusic
+    username: db-Andy
+    password: Koala75
 
-  jpa :
-    hibernate :
-      ddl-auto : update
+  jpa:
+    hibernate:
+      ddl-auto: update
 
   security:
     require-ssl : true
     basic:
-      enabled : false
+      enabled: false
     oauth2:
       resource:
       client:
