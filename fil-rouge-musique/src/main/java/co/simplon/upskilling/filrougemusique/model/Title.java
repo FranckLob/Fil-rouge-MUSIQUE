@@ -13,6 +13,7 @@ public class Title {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "title_seq_id")
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne

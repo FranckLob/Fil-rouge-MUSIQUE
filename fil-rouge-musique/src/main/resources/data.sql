@@ -41,3 +41,36 @@ insert into title (id,name,type,style,author,composer) values (title_seq_id.next
 insert into title (id,name,type,style,author,composer) values (title_seq_id.nextval, "Sally Brown",6,14,"Laurel Aitken","Laurel Aitken");
 insert into title (id,name,type,style,author,composer) values (title_seq_id.nextval, "Skinhead",6,14,"Laurel Aitken","Laurel Aitken");
 
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Andrea", true);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Franck", true);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Yves", true);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Jules", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Bernard", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Vincent", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Jean Marc", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Pierre", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Carole", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Philippe", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Fred", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Benoit", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Saya", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Sylvain", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Franck", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Guillaume", false);
+insert into appuser (id,nickname,is_admin) values (appuser_seq_id.nextval, "Nicolas", false);
+
+insert into artwork(id,name,editor,producer) values (artwork_seq_id.nextval, "You''ve Come a Long Way, Baby","Skint Record","Fat Boy Slim")
+insert into artwork(id,name,editor,producer) values (artwork_seq_id.nextval, "Surfer Rosa","4AD","Steve Albiny Boy Slim")
+
+insert into artist(id,name) values (artist_seq_id.nextval, "Fat Boy Slim");
+insert into artist(id,name) values (artist_seq_id.nextval, "Laurel Aitken");
+insert into artist(id,name) values (artist_seq_id.nextval, "Daft Punk");
+insert into artist(id,name) values (artist_seq_id.nextval, "Pixies");
+insert into artist(id,name) values (artist_seq_id.nextval, "Bob Dylan");
+insert into artist(id,name) values (artist_seq_id.nextval, "Avril Lavigne");
+insert into artist(id,name) values (artist_seq_id.nextval, "Guns and Roses");
+insert into artist(id,name) values (artist_seq_id.nextval, "Bob Dylan");
+insert into artist(id,name) values (artist_seq_id.nextval, "The Specials");
+insert into artist(id,name) values (artist_seq_id.nextval, "Fred Bueno and his Fuckin Fuckers Band from Bdx");
+
+insert into publication(id,app_user,artist,date,artwork,title,snippet) values (publication_seq_id.nextval,"Andrea","","2020-03-04","",);
