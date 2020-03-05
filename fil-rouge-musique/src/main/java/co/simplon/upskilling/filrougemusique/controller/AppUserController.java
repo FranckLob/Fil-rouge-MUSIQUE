@@ -26,12 +26,16 @@ public class AppUserController {
         return ResponseEntity.ok(appUserService.createAppUser(appUser));
     }
 
+    @GetMapping
+    public ResponseEntity<List<AppUser>> getAllAppUsers(){
+        return ResponseEntity.ok(appUserService.getAllAppUsers());
+    }
 //    @GetMapping("{sortBy}")
 //    public ResponseEntity<List<AppUser>> getAllAppUsersBySortCriteria(@RequestParam Sort sortBy) {
 //        return ResponseEntity.ok(appUserService.getAppUsersSortedBySortCriteria(sortBy));
 //    }
 
-    @GetMapping("/{nickname}")
+    @GetMapping("/Bynickname")
     public ResponseEntity<AppUser> getAppUserByNickName(@RequestParam String nickName) {
         Optional<AppUser> appUserOptional = appUserService.getOneAppUserByNickname(nickName);
         if(appUserOptional.isPresent()) {
@@ -41,13 +45,9 @@ public class AppUserController {
         }
     }
 
+    @GetMapping("/Byauthority")
     @PutMapping
-    public ResponseEntity<AppUser> updateAppUser(@RequestBody AppUser appUser){
-        Optional<AppUser> appUserOptional = appUserService.getAppUserById(appUser.getId());
-        if(appUserOptional.isPresent()){
-            return ResponseEntity.ok(appUserOptional.get());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<List<AppUser>> updateAppUser(@RequestParam String authority){
+        return ResponseEntity.ok(appUserService.getAllAppUsersByAuthority(authority));
     }
 }

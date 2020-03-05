@@ -1,6 +1,7 @@
 package co.simplon.upskilling.filrougemusique.repository;
 
 import co.simplon.upskilling.filrougemusique.model.AppUser;
+import co.simplon.upskilling.filrougemusique.model.Artist;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,8 @@ public interface PublicationRepository extends PagingAndSortingRepository<Public
     Page<Publication> getPublicationsByArtwork_IdEquals(Long artworkId, Pageable pageable);
 
     Page<Publication> getPublicationsByTitle_IdEquals(Long titleId, Pageable pageable);
+
+//    Page<Publication> findPublicationsByArtist(Artist artist);
 
 //    Page<Publication> getPublicationsByStyleId(Long styleId, Pageable pageable);
 }

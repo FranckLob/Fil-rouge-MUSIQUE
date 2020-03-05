@@ -1,6 +1,6 @@
 package co.simplon.upskilling.filrougemusique.model;
 
-import net.minidev.json.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,10 +22,11 @@ public class AppUser {
 
     @ManyToMany
     @JoinTable(
-            name = "appuser-authority",
-            joinColumns = @JoinColumn(name = "appuser-id"),
+            name = "appuser_authority",
+            joinColumns = @JoinColumn(name = "appuser_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id"))
     private List<Authority> authorities;
+
 
     @OneToMany(mappedBy = "appUser")
     @JsonIgnore
