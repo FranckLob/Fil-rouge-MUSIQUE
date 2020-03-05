@@ -11,7 +11,6 @@ import java.util.List;
 public class ArtistServiceImpl implements ArtistService {
 
     private ArtistRepository artistRepository;
-  //  private PublicationRepository publicationRepository;
 
     public ArtistServiceImpl(ArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
@@ -19,14 +18,12 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public Artist createArtist(Artist artist) {
-        return artistRepository.save(artist);
-
+        // If artist already exist => do not create it inside of Artist table
+        if(artistRepository.findById(artist.getId()) == null){
+            artistRepository.save(artist);
+        }
+        return artist;
     }
-
-//    @Override
-//    public List<Artist> getArtistsByPublication(Publication publication) {
-//        return publicationRepository.findAllBy(Publication publication);
-//    }
 
 }
 

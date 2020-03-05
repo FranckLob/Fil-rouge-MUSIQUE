@@ -28,6 +28,20 @@ public interface AppUserService {
 //    List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria);
 
     /**
+     * For Admin only :
+     * @return
+     * Get List of all AppUsers
+     */
+    List<AppUser> getAllAppUsers();
+
+    /**
+     * For Admin only
+     * @param authority
+     * @return
+     * get list of User having a defined authority
+     */
+    List<AppUser> getAllAppUsersByAuthority(String authority);
+    /**
      * For AnyUsers
      * @param appUserId based on gitHub call
      * @return

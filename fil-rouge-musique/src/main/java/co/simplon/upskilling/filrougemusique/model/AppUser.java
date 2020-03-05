@@ -28,6 +28,7 @@ public class AppUser {
             inverseJoinColumns = @JoinColumn(name = "authority_id"))
     private List<Authority> authorities;
 
+
     @OneToMany(mappedBy = "appUser")
     @JsonIgnore
     private List<Publication> publicationList = new ArrayList<>();

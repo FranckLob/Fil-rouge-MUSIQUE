@@ -1,38 +1,37 @@
 package co.simplon.upskilling.filrougemusique;
 
-import co.simplon.upskilling.filrougemusique.model.Title;
-import javafx.beans.binding.Bindings;
+
+import co.simplon.upskilling.filrougemusique.model.TestRestResponsePage;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-@ExtendWith(SpringExtension.class)
+import static org.assertj.core.api.Assertions.assertThat;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FilRougeMusiqueApplicationTests {
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate testRestTemplate;
 
     @Test
-    public void getTitles() {
-        // When retrieving titles from /api/title
-        List<Title> titles = this.restTemplate.getForObject("/api/title", List.class);
+    void getPublications() {
+        TestRestResponsePage publications = this.testRestTemplate.getForObject("/api/publications", TestRestResponsePage.class);
 
-        // Then a non null list should be returned
-     //   assertThat(titles).isNotNull();
+//        Map params = new HashMap();
+//        ResponseEntity<Page> publications = this.testRestTemplate.exchange("/api/publications", HttpMethod.GET, null, Page.class, params);
+
+        // a non null page should be returned
+        assertThat(publications).isNotNull();
     }
-
-//    private Bindings assertThat(List<?> cities) {
-//    }
-
-
-    @Test
-    void contextLoads() {
-    }
-
 }

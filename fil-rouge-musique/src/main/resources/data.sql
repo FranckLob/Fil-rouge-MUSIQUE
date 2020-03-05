@@ -42,7 +42,6 @@ insert into title (id,name,type_id,style_id,author,composer) values (nextval('ti
 insert into title (id,name,type_id,style_id,author,composer) values (nextval('title_seq_id'), 'Skinhead',6,14,'Laurel Aitken','Laurel Aitken');
 insert into title (id,name,type_id,style_id,author,composer) values (nextval('title_seq_id'), 'Knockin on heaven s doors',6,9,'Bob Dylan','Gun and Roses');
 
-
 insert into app_user (id,email,nick_name) values (nextval('appuser_seq_id'),'andrea.jouanin.devweb@gmail.com','Andrea');
 insert into app_user (id,email,nick_name) values (nextval('appuser_seq_id'),'yves.benoit.devweb@gmail.com','Yves');
 insert into app_user (id,email,nick_name) values (nextval('appuser_seq_id'),'franck.lobjois.devweb@gmail.com','Franck');
