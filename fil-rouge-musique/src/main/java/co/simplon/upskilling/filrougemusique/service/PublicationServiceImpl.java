@@ -1,25 +1,25 @@
 package co.simplon.upskilling.filrougemusique.service;
 
+import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
 import co.simplon.upskilling.filrougemusique.model.*;
 import co.simplon.upskilling.filrougemusique.repository.PublicationRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PublicationServiceImpl implements PublicationService {
 
     private PublicationRepository publicationRepository;
 
+    private ArtworkService artworkService;
+
     public PublicationServiceImpl(PublicationRepository publicationRepository) {
         this.publicationRepository = publicationRepository;
     }
 
     @Override
-    public Page<Publication> getPublications(Integer pageNumber, Integer pageSize) {
+    public Page<Publication> getAllPublications(Integer pageNumber, Integer pageSize) {
         return publicationRepository.findAll(PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
     }
 
@@ -53,6 +53,23 @@ public class PublicationServiceImpl implements PublicationService {
 //        return null;
 //    }
 
+    @Override
+    public Publication savePublication(Publication publication) throws Exception {
+        if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null) {
+            if (publication.getArtwork() != null && artworkService.getAllArtworks().contains(publication.getArtwork()) == false) {
+                artworkService.saveArtwork(publication.getArtwork());
+            }
+            return publicationRepository.save(publication);
+        } else {
+            throw new MissingEntityException("Au moins un des 3 champs, artiste, album, titre, doit être renseigné.");
+        }
+    }
+
+    @Override
+    public void deletePublication(Long publicationId) {
+        publicationRepository.deleteById(publicationId);
+    }
+
     public int returnPageNumber(Integer pageNumber) {
         return (pageNumber != null) ? pageNumber : 0;
     }
@@ -60,4 +77,5 @@ public class PublicationServiceImpl implements PublicationService {
     public int returnPageSize(Integer pageSize, int size) {
         return (pageSize != null) ? pageSize : size;
     }
+
 }
