@@ -3,8 +3,6 @@ package co.simplon.upskilling.filrougemusique.model;
 import javax.persistence.*;
 import java.net.URL;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Publication {

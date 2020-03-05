@@ -2,10 +2,7 @@ package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.*;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public interface PublicationService {
@@ -16,7 +13,7 @@ public interface PublicationService {
      * @return the complete list
      */
 
-    Page<Publication> getPublications(Integer pageNumber, Integer pageSize);
+    Page<Publication> getAllPublications(Integer pageNumber, Integer pageSize);
 
     /**
      * Get the filtered list of publications regarding user
@@ -63,5 +60,9 @@ public interface PublicationService {
 //     * @return the filtered list
 //     */
 //    List<Publication> getFilteredPublicationsByType(Type type, Pageable pageable);
+
+    Publication savePublication(Publication publication) throws Exception;
+
+    void deletePublication(Long publicationId);
 
 }
