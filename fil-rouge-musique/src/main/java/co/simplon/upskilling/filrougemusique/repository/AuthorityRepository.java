@@ -1,16 +1,15 @@
 package co.simplon.upskilling.filrougemusique.repository;
 
 import co.simplon.upskilling.filrougemusique.model.AppUser;
+import co.simplon.upskilling.filrougemusique.model.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 import java.util.Optional;
 
 @Repository
-public interface AppUserRepository extends JpaRepository <AppUser, Long> {
+public interface AuthorityRepository extends JpaRepository<Authority, Long> {
 
-    List<AppUser> findAllByAuthorities(String authorities);
-
-    Optional<AppUser> findOneByNickName(String appUserNickname);
+    Optional<Authority> findOneByAppUsers(AppUser appUser);
 }

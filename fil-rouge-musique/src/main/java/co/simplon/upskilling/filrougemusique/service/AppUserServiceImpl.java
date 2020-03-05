@@ -2,10 +2,8 @@ package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.AppUser;
 import co.simplon.upskilling.filrougemusique.repository.AppUserRepository;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.lang.management.OperatingSystemMXBean;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +18,22 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public AppUser createAppUser(AppUser appUserToBeCreated) {
-        return appUserRepository.save(appUserToBeCreated);
+        Optional<AppUser> appUserOptional = appUserRepository.findById(appUserToBeCreated.getId());
+        if (!(appUserOptional.isPresent())) {
+            return appUserRepository.save(appUserOptional.get());
+        } else {
+            return null;
+        }
     }
+
+
+    @Override
+    public List<AppUser> getAllAppUsers(){return appUserRepository.findAll();}
 
 //    @Override
 //    public List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria) {
 //        return appUserRepository.findAll ("nickName", "authorities");
-//    }
+//    }Repository = appUserRepository;
 //
     @Override
     public Optional<AppUser> getOneAppUserByNickname(String appUserNickname) {
@@ -35,10 +42,13 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public Optional<AppUser> getAppUserById(Long appUserId){
-        Optional<AppUser> appUserOptional = appUserRepository.findById(appUserId);
-        return  appUserOptional;
+        return appUserRepository.findById(appUserId);
     }
 
+    @Override
+    public List<AppUser> getAllAppUsersByAuthority(String authority) {
+        return appUserRepository.findAllByAuthorities(authority);
+    }
 
     @Override
     public AppUser updateAppUser(AppUser appUserToBeUpdate) {
