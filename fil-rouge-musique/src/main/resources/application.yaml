@@ -11,9 +11,9 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/shareyourmusic
-    username: db-Andy
-    password: Koala75
-#    initialization-mode: always
+    username: db-user
+    password: changermoi
+    initialization-mode: always
 
   jpa:
     hibernate:
@@ -35,7 +35,6 @@ spring:
 #            user-authorization-uri: https://github.com/login/oauth/authorize
 #            user-info-uri: https://api.github.com/user
 #            client-authentication-scheme: form
-#
 #logging:
 #  level:
 #    org:

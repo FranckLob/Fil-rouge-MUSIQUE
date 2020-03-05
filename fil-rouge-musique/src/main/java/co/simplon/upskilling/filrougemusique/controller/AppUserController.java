@@ -30,11 +30,6 @@ public class AppUserController {
     public ResponseEntity<List<AppUser>> getAllAppUsers(){
         return ResponseEntity.ok(appUserService.getAllAppUsers());
     }
-//    @GetMapping("{sortBy}")
-//    public ResponseEntity<List<AppUser>> getAllAppUsersBySortCriteria(@RequestParam Sort sortBy) {
-//        return ResponseEntity.ok(appUserService.getAppUsersSortedBySortCriteria(sortBy));
-//    }
-
     @GetMapping("/Bynickname")
     public ResponseEntity<AppUser> getAppUserByNickName(@RequestParam String nickName) {
         Optional<AppUser> appUserOptional = appUserService.getOneAppUserByNickname(nickName);

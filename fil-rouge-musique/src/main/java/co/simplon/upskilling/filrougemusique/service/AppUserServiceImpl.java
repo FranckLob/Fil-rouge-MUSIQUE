@@ -26,15 +26,9 @@ public class AppUserServiceImpl implements AppUserService {
         }
     }
 
-
     @Override
     public List<AppUser> getAllAppUsers(){return appUserRepository.findAll();}
 
-//    @Override
-//    public List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria) {
-//        return appUserRepository.findAll ("nickName", "authorities");
-//    }Repository = appUserRepository;
-//
     @Override
     public Optional<AppUser> getOneAppUserByNickname(String appUserNickname) {
         return appUserRepository.findOneByNickName(appUserNickname);

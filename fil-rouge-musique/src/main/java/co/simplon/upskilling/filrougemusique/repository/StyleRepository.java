@@ -6,6 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StyleRepository extends PagingAndSortingRepository<Style,Long> {
+public interface StyleRepository extends JpaRepository<Style,Long> {
 }
 

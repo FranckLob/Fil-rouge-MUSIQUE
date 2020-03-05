@@ -3,8 +3,6 @@ package co.simplon.upskilling.filrougemusique.service;
 import co.simplon.upskilling.filrougemusique.model.Artist;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.repository.ArtistRepository;
-import co.simplon.upskilling.filrougemusique.repository.PublicationRepository;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,11 +24,6 @@ public class ArtistServiceImpl implements ArtistService {
         }
         return artist;
     }
-
-//    @Override
-//    public Page<Publication> getPublicationsByArtist(Artist artist) {
-//        return publicationRepository.findPublicationsByArtist(artist);
-//    }
 
 }
 
