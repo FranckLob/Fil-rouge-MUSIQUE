@@ -21,4 +21,3 @@ public interface TypeService {
      */
     void deleteType(Long typeToDeleteId);
 }
-

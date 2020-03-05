@@ -26,13 +26,13 @@ public class AppUserController {
         return ResponseEntity.ok(appUserService.createAppUser(appUser));
     }
 
-    @GetMapping("{sortBy}")
-    public ResponseEntity<List<AppUser>> getAllAppUsersBySortCriteria(@RequestParam Sort sortBy) {
-        return ResponseEntity.ok(appUserService.getAppUsersSortedBySortCriteria(sortBy));
-    }
+//    @GetMapping("{sortBy}")
+//    public ResponseEntity<List<AppUser>> getAllAppUsersBySortCriteria(@RequestParam Sort sortBy) {
+//        return ResponseEntity.ok(appUserService.getAppUsersSortedBySortCriteria(sortBy));
+//    }
 
-    @GetMapping("/nickname")
-    public ResponseEntity<AppUser> getAppUserByNickName(@RequestBody String nickName) {
+    @GetMapping("/{nickname}")
+    public ResponseEntity<AppUser> getAppUserByNickName(@RequestParam String nickName) {
         Optional<AppUser> appUserOptional = appUserService.getOneAppUserByNickname(nickName);
         if(appUserOptional.isPresent()) {
             return ResponseEntity.ok(appUserOptional.get());

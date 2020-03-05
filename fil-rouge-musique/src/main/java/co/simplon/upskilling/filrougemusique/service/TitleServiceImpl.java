@@ -27,5 +27,10 @@ public class TitleServiceImpl implements TitleService {
         titleRepository.deleteById(titleToDeleteId);
     }
 
+    @Override
+    public List<Title> getTitles() {
+        return titleRepository.findAll();
+    }
+
 
 }

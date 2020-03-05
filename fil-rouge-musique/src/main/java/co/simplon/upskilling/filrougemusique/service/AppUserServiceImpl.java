@@ -3,11 +3,13 @@ package co.simplon.upskilling.filrougemusique.service;
 import co.simplon.upskilling.filrougemusique.model.AppUser;
 import co.simplon.upskilling.filrougemusique.repository.AppUserRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.lang.management.OperatingSystemMXBean;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AppUserServiceImpl implements AppUserService {
 
     private AppUserRepository appUserRepository;
@@ -21,11 +23,11 @@ public class AppUserServiceImpl implements AppUserService {
         return appUserRepository.save(appUserToBeCreated);
     }
 
-    @Override
-    public List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria) {
-        return appUserRepository.findAll("nickName", "authorities");
-    }
-
+//    @Override
+//    public List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria) {
+//        return appUserRepository.findAll ("nickName", "authorities");
+//    }
+//
     @Override
     public Optional<AppUser> getOneAppUserByNickname(String appUserNickname) {
         return appUserRepository.findOneByNickName(appUserNickname);

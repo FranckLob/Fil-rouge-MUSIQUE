@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+#security:
+#  oauth2:
+#    client:
+#      grant-type: client_credentials
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/share_your_music
+    username: "db-user"
+    password: Walou2235
+    initialization-mode: always
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+#  security:
+#    require-ssl : true
+#    basic:
+#      enabled: false
+#    oauth2:
+#      resource:
+#      client:
+#        registration:
+#          github:
+#            clientId: a089d83e029985e3f26a
+#            clientSecret: 78f41976af79acf76edd3eb21e406e5e5465264a
+#            grant-type: client_credentials
+#            access-token-uri: https://github.com/login/oauth/access_token
+#            user-authorization-uri: https://github.com/login/oauth/authorize
+#            user-info-uri: https://api.github.com/user
+#            client-authentication-scheme: form
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+#        web:
+#          FilterChainProxy: DEBUG
+

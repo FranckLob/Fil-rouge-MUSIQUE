@@ -14,7 +14,6 @@ public interface StyleService {
 
     Style createStyle(Style styleToCreate);
 
-
     /**
      * For Admin AppUsers only
      * @param styleToDeleteId

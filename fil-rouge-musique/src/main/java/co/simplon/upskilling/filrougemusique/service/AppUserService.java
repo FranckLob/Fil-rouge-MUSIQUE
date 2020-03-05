@@ -18,14 +18,14 @@ public interface AppUserService {
      */
     AppUser createAppUser(AppUser appUserToBeCreated);
 
-    /**
-     * for Admin AppUsers only :
-     * @return
-     * get complete list of AppUsers sorted by sortCriteria below :
-     * - nickname (to be able to delete them if needed)
-     * - authorityLevel
-     */
-    List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria);
+//    /**
+//     * for Admin AppUsers only :
+//     * @return
+//     * get complete list of AppUsers sorted by sortCriteria below :
+//     * - nickname (to be able to delete them if needed)
+//     * - authorityLevel
+//     */
+//    List<AppUser> getAppUsersSortedBySortCriteria(Sort sortCriteria);
 
     /**
      * For AnyUsers
