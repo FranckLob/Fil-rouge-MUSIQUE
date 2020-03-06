@@ -35,6 +35,13 @@ public class PublicationController {
             @Valid @RequestParam(value = "sort", required = false) List<Sort.Order> sortCriteriaList) {
         return this.publicationService.getPublicationsSortedBySortCriteriaList
                 (pageNumber, pageSize, sortCriteriaList);
+
+    @GetMapping("/byartist/{artistId}")
+    public Page<Publication> getPublicationsbyArtist(
+            @PathVariable(value = "artistId") Long artistId,
+            @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+            @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        return this.publicationService.getFilteredPublicationsByArtist(artistId, pageNumber, pageSize);
     }
 
     @PostMapping
@@ -42,6 +49,7 @@ public class PublicationController {
         try {
             return ResponseEntity.ok(this.publicationService.savePublication(newPublication));
         } catch (MissingEntityException e) {
+            System.out.println(e.getLocalizedMessage());
             return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();

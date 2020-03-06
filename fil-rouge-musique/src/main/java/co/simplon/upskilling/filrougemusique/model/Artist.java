@@ -1,10 +1,7 @@
 package co.simplon.upskilling.filrougemusique.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.domain.Page;
-
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,8 +15,8 @@ public class Artist {
     @Column(name="name", unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "artist")
     @JsonIgnore
+    @OneToMany(mappedBy = "artist")
     private Set<Publication> publicationSet;
 
     public Long getId() {

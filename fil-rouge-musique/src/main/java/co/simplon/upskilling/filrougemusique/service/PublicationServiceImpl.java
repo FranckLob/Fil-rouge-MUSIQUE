@@ -65,6 +65,7 @@ public class PublicationServiceImpl implements PublicationService {
 //    }
 
     @Override
+
     public Page<Publication> getPublicationsSortedBySortCriteriaList(Integer pageNumber,
                                                                Integer pageSize,
                                                                List<Sort.Order> sortByCriteriaList) {
@@ -107,10 +108,25 @@ public class PublicationServiceImpl implements PublicationService {
     }
 
 
+    public Page<Publication> getSortedPublicationsByTitle(Long titleId, Integer pageNumber, Integer pageSize, String criterion, String direction) {
+        return publicationRepository.getPublicationsByTitle_IdEquals(titleId, PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+    }
+
+    @Override
+    public Page<Publication> getSortedPublicationsByArtist(Long artistId, Integer pageNumber, Integer pageSize, String criterion, String direction) {
+        return publicationRepository.getPublicationsByTitle_IdEquals(artistId, PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+
+    }
+
+    @Override
+    public Page<Publication> getSortedPublicationsByArtwork(Long artworkId, Integer pageNumber, Integer pageSize, String criterion, String direction) {
+        return publicationRepository.getPublicationsByTitle_IdEquals(artworkId, PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+    }
+
     @Override
     public Publication savePublication(Publication publication) throws Exception {
         if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null) {
-            if (publication.getArtwork() != null && artworkService.getAllArtworks().contains(publication.getArtwork()) == false) {
+            if (publication.getArtwork() != null && !artworkService.getAllArtworks().contains(publication.getArtwork())) {
                 artworkService.saveArtwork(publication.getArtwork());
             }
             // If Artist is provided (not null) and does not exist in Database(not found) => Create Artist
@@ -131,11 +147,11 @@ public class PublicationServiceImpl implements PublicationService {
         publicationRepository.deleteById(publicationId);
     }
 
-    public int returnPageNumber(Integer pageNumber) {
+    private int returnPageNumber(Integer pageNumber) {
         return (pageNumber != null) ? pageNumber : 0;
     }
 
-    public int returnPageSize(Integer pageSize, int size) {
+    private int returnPageSize(Integer pageSize, int size) {
         return (pageSize != null) ? pageSize : size;
     }
 

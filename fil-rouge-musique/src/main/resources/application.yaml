@@ -10,15 +10,14 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/shareyourmusic
-    username: db-Andy
-    password: Koala75
-    initialization-mode: never
-    # initialization-mode: always
+    url: jdbc:postgresql://localhost:5432/share_your_music
+    username: db-user
+    password: achanger
+    initialization-mode: always
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 #  security:
 #    require-ssl : true
