@@ -17,6 +17,7 @@ public class Type {
     @Column(nullable = false)
     private String type;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "type")
     @JsonIgnore
     private List<Title> titleList=new ArrayList<>();

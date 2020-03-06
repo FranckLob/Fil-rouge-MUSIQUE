@@ -30,6 +30,7 @@ public class Title {
 
 //    private URL snippet;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "title")
     @JsonIgnore
     private Set<Publication> publicationSet = new HashSet<>();

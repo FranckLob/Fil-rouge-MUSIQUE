@@ -14,8 +14,9 @@ public class PublicationServiceImpl implements PublicationService {
 
     private ArtworkService artworkService;
 
-    public PublicationServiceImpl(PublicationRepository publicationRepository) {
+    public PublicationServiceImpl(PublicationRepository publicationRepository, ArtworkService artworkService) {
         this.publicationRepository = publicationRepository;
+        this.artworkService = artworkService;
     }
 
     @Override
@@ -72,7 +73,7 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public Publication savePublication(Publication publication) throws Exception {
         if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null) {
-            if (publication.getArtwork() != null && artworkService.getAllArtworks().contains(publication.getArtwork()) == false) {
+            if (publication.getArtwork() != null && !artworkService.getAllArtworks().contains(publication.getArtwork())) {
                 artworkService.saveArtwork(publication.getArtwork());
             }
             return publicationRepository.save(publication);
@@ -86,11 +87,11 @@ public class PublicationServiceImpl implements PublicationService {
         publicationRepository.deleteById(publicationId);
     }
 
-    public int returnPageNumber(Integer pageNumber) {
+    private int returnPageNumber(Integer pageNumber) {
         return (pageNumber != null) ? pageNumber : 0;
     }
 
-    public int returnPageSize(Integer pageSize, int size) {
+    private int returnPageSize(Integer pageSize, int size) {
         return (pageSize != null) ? pageSize : size;
     }
 
