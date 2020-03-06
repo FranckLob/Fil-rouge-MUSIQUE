@@ -28,7 +28,7 @@ public class PublicationController {
         return this.publicationService.getAllPublications(pageNumber, pageSize);
     }
 
-    @GetMapping("/sort/{sortCriteriaList}")
+    @GetMapping("/sort")
     public Page<Publication> getPublicationsSorted(
             @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
             @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,
