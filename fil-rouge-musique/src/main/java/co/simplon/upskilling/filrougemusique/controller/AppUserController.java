@@ -41,7 +41,7 @@ public class AppUserController {
     }
 
     @GetMapping("/Byauthority")
-    public ResponseEntity<List<AppUser>> updateAppUser(@RequestParam String authority){
+    public ResponseEntity<List<AppUser>> getAppUsersByAuthority(@RequestParam String authority){
         return ResponseEntity.ok(appUserService.getAllAppUsersByAuthority(authority));
     }
 
