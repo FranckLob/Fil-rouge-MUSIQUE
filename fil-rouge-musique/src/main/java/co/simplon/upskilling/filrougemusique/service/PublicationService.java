@@ -2,7 +2,10 @@ package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.*;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface PublicationService {
@@ -61,6 +64,11 @@ public interface PublicationService {
 //     */
 //    List<Publication> getFilteredPublicationsByType(Type type, Pageable pageable);
 
+
+    Page<Publication> getPublicationsSortedBySortCriteriaList
+            (Integer pageNumber, Integer pageSize,
+             List<Sort.Order> sortByCriteriaList);
+
     /**
      * Get the sorted list of publications regarding title
      *
@@ -96,7 +104,6 @@ public interface PublicationService {
      */
 
     Page<Publication> getSortedPublicationsByArtwork(Long artworkId, Integer pageNumber, Integer pageSize, String criterion, String direction);
-
 
     Publication savePublication(Publication publication) throws Exception;
 

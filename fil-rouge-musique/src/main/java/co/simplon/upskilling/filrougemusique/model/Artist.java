@@ -12,7 +12,7 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "artist_seq_id")
     private Long id;
 
-    @Column(name="name")
+    @Column(name="name", unique = true)
     private String name;
 
     @JsonIgnore
