@@ -12,12 +12,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/shareyourmusic
     username: db-user
-    password: changermoi
+    password: achanger
     initialization-mode: always
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 #  security:
 #    require-ssl : true
