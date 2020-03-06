@@ -54,6 +54,22 @@ public class PublicationServiceImpl implements PublicationService {
 //    }
 
     @Override
+    public Page<Publication> getSortedPublicationsByTitle(Long titleId, Integer pageNumber, Integer pageSize, String criterion, String direction) {
+        return publicationRepository.getPublicationsByTitle_IdEquals(titleId, PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+    }
+
+    @Override
+    public Page<Publication> getSortedPublicationsByArtist(Long artistId, Integer pageNumber, Integer pageSize, String criterion, String direction) {
+        return publicationRepository.getPublicationsByTitle_IdEquals(artistId, PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+
+    }
+
+    @Override
+    public Page<Publication> getSortedPublicationsByArtwork(Long artworkId, Integer pageNumber, Integer pageSize, String criterion, String direction) {
+        return publicationRepository.getPublicationsByTitle_IdEquals(artworkId, PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+    }
+
+    @Override
     public Publication savePublication(Publication publication) throws Exception {
         if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null) {
             if (publication.getArtwork() != null && artworkService.getAllArtworks().contains(publication.getArtwork()) == false) {

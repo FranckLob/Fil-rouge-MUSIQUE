@@ -10,11 +10,23 @@ import java.util.List;
 public interface TitleService {
 
     /**
+     * Title list retrieval.
+     *
+     * @param pageNumber the page number to get
+     * @param pageSize   the page size to choose
+     * @param criterion  the sorting criterion
+     * @param direction  the sorting direction
+     * @return a page object with titles
+     */
+    Page<Title> getTitles(Integer pageNumber, Integer pageSize, String criterion, String direction);
+
+    /**
      * For AnyUsers
      *
      * @param titleToCreate based on gitHub call
      * @return title created
      */
+
     Title createTitle(Title titleToCreate);
 
     /**
@@ -24,10 +36,4 @@ public interface TitleService {
      * @return void
      */
     void deleteTitle(Long titleToDeleteId);
-
-    /**
-     * @param
-     * @return List<Title>
-     */
-    Page<Title> getTitles(Integer pageNumber, Integer pageSize);
 }
