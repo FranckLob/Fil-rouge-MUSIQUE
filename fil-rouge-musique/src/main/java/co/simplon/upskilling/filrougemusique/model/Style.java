@@ -19,6 +19,7 @@ public class Style {
 
     @JsonIgnore
     @OneToMany(mappedBy = "style")
+    @JsonIgnore
     private List<Title> titleList=new ArrayList<>();
 
     public Long getId() {

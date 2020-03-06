@@ -22,6 +22,7 @@ public class Artwork {
 
     @JsonIgnore
     @OneToMany(mappedBy = "artwork")
+    @JsonIgnore
     private Set<Publication> publicationSet=new HashSet<>();
 
     public Long getId() {

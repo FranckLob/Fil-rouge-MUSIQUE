@@ -32,6 +32,7 @@ public class Title {
 
     @JsonIgnore
     @OneToMany(mappedBy = "title")
+    @JsonIgnore
     private Set<Publication> publicationSet = new HashSet<>();
 
     public Long getId() {

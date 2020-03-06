@@ -61,6 +61,43 @@ public interface PublicationService {
 //     */
 //    List<Publication> getFilteredPublicationsByType(Type type, Pageable pageable);
 
+    /**
+     * Get the sorted list of publications regarding title
+     *
+     * @param pageNumber the page number to get
+     * @param pageSize   the page size to choose
+     * @param criterion  the sorting criterion
+     * @param direction  the sorting direction
+     * @return a page object with the sorted list
+     */
+
+    Page<Publication> getSortedPublicationsByTitle(Long titleId, Integer pageNumber, Integer pageSize, String criterion, String direction);
+
+    /**
+     * Get the sorted list of publications regarding artist
+     *
+     * @param pageNumber the page number to get
+     * @param pageSize   the page size to choose
+     * @param criterion  the sorting criterion
+     * @param direction  the sorting direction
+     * @return a page object with the sorted list
+     */
+
+    Page<Publication> getSortedPublicationsByArtist(Long artistId, Integer pageNumber, Integer pageSize, String criterion, String direction);
+
+    /**
+     * Get the sorted list of publications regarding title
+     *
+     * @param pageNumber the page number to get
+     * @param pageSize   the page size to choose
+     * @param criterion  the sorting criterion
+     * @param direction  the sorting direction
+     * @return a page object with the sorted list
+     */
+
+    Page<Publication> getSortedPublicationsByArtwork(Long artworkId, Integer pageNumber, Integer pageSize, String criterion, String direction);
+
+
     Publication savePublication(Publication publication) throws Exception;
 
     void deletePublication(Long publicationId);

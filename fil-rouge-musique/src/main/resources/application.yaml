@@ -10,7 +10,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/shareyourmusic
+    url: jdbc:postgresql://localhost:5432/share_your_music
     username: db-user
     password: achanger
     initialization-mode: always
