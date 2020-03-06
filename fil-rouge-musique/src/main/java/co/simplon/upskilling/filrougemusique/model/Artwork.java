@@ -1,5 +1,7 @@
 package co.simplon.upskilling.filrougemusique.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +21,7 @@ public class Artwork {
     private String producer;
 
     @OneToMany(mappedBy = "artwork")
+    @JsonIgnore
     private Set<Publication> publicationSet=new HashSet<>();
 
     public Long getId() {

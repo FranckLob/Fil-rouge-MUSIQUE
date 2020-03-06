@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface ArtistService {
@@ -16,6 +17,14 @@ public interface ArtistService {
      * @return an Artist
      */
     Artist createArtist(Artist artist);
+
+    /**
+     * Find Artist by its Name (name being unique)
+     * @param artistName
+     * @return
+     * One optional Artist
+     */
+    Artist getArtistByName(String artistName);
 
 //    /**
 //     * Get all Publications related to one Artist

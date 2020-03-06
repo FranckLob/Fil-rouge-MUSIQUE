@@ -4,10 +4,12 @@ import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.service.PublicationService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/publications")
@@ -24,6 +26,15 @@ public class PublicationController {
             @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
             @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize) {
         return this.publicationService.getAllPublications(pageNumber, pageSize);
+    }
+
+    @GetMapping("/sort/{sortCriteriaList}")
+    public Page<Publication> getPublicationsSorted(
+            @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+            @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,
+            @Valid @RequestParam(value = "sort", required = false) List<Sort.Order> sortCriteriaList) {
+        return this.publicationService.getPublicationsSortedBySortCriteriaList
+                (pageNumber, pageSize, sortCriteriaList);
     }
 
     @PostMapping
