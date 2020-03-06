@@ -11,9 +11,10 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/shareyourmusic
-    username: db-user
-    password: changermoi
-    initialization-mode: always
+    username: db-Andy
+    password: Koala75
+    initialization-mode: never
+    # initialization-mode: always
 
   jpa:
     hibernate:

@@ -1,5 +1,7 @@
 package co.simplon.upskilling.filrougemusique.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Type {
     private String type;
 
     @OneToMany(mappedBy = "type")
+    @JsonIgnore
     private List<Title> titleList=new ArrayList<>();
 
     public Long getId() {
