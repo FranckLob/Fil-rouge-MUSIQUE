@@ -17,7 +17,6 @@ public class Style {
     @Column(nullable = false)
     private String style;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "style")
     @JsonIgnore
     private List<Title> titleList=new ArrayList<>();

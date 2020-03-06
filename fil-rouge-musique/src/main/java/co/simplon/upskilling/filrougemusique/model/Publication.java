@@ -11,7 +11,6 @@ public class Publication {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "publication_seq_id")
     private Long id;
 
-    //@Column(nullable = false)
     @ManyToOne
     private AppUser appUser;
 
