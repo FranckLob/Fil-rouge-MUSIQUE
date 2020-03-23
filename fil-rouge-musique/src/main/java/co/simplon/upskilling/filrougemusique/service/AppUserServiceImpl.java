@@ -48,7 +48,7 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUser updateAppUser(AppUser appUserToBeUpdate) {
         Optional<AppUser> appUserOptional = appUserRepository.findById(appUserToBeUpdate.getId());
         if(appUserOptional.isPresent()){
-            return appUserOptional.get();
+            return appUserRepository.save(appUserOptional.get());
         } else {
             return null;
         }

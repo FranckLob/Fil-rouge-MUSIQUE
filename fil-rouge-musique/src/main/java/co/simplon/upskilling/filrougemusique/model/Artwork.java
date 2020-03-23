@@ -20,7 +20,6 @@ public class Artwork {
 
     private String producer;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "artwork")
     @JsonIgnore
     private Set<Publication> publicationSet=new HashSet<>();

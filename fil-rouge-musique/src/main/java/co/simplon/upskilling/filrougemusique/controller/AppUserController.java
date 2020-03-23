@@ -41,8 +41,26 @@ public class AppUserController {
     }
 
     @GetMapping("/Byauthority")
-    @PutMapping
-    public ResponseEntity<List<AppUser>> updateAppUser(@RequestParam String authority){
+    public ResponseEntity<List<AppUser>> getAppUsersByAuthority(@RequestParam String authority){
         return ResponseEntity.ok(appUserService.getAllAppUsersByAuthority(authority));
     }
+
+    @PutMapping
+    public ResponseEntity<AppUser> updateAppUser(@RequestBody AppUser appUser){
+        Optional<AppUser> appUserOptional = appUserService.getAppUserById(appUser.getId());
+        if(appUserOptional.isPresent()){
+            return ResponseEntity.ok(appUserService.updateAppUser(appUserOptional.get()));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @DeleteMapping("/{appUserId}")
+    public void deleteAppUser(@PathVariable Long appUserId){
+        Optional<AppUser> appUserOptional = appUserService.getAppUserById(appUserId);
+        if(appUserOptional.isPresent()){
+            appUserService.deleteAppUser(appUserId);
+        }
+    }
+
 }

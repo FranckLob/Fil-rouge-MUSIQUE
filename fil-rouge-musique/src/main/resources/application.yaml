@@ -10,9 +10,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/share_your_music
-    username: db-user
-    password: achanger
+    url: jdbc:postgresql://localhost:5432/shareyourmusic
+    username: change
+    password: change
     initialization-mode: always
 
   jpa:

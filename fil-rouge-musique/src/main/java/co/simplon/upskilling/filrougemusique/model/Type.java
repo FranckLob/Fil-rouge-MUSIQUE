@@ -19,7 +19,6 @@ public class Type {
 
     @JsonIgnore
     @OneToMany(mappedBy = "type")
-    @JsonIgnore
     private List<Title> titleList=new ArrayList<>();
 
     public Long getId() {

@@ -3,6 +3,8 @@ package co.simplon.upskilling.filrougemusique.controller;
 import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.service.PublicationService;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -23,24 +25,25 @@ public class PublicationController {
 
     @GetMapping
     public Page<Publication> getPublications(
-            @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-            @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+            @ApiParam(value = "Query param for 'pageNumber'")   @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+            @ApiParam(value = "Query param for 'pageSize'")@Valid @RequestParam(value = "pageSize", required = false) Integer pageSize) {
         return this.publicationService.getAllPublications(pageNumber, pageSize);
     }
 
     @GetMapping("/sort")
-    public Page<Publication> getPublicationsSorted(
-            @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-            @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,
-            @Valid @RequestParam(value = "sort", required = false) List<Sort.Order> sortCriteriaList) {
+    public Page<Publication> getPublicationsSortedBySortCriteriaList(
+            @ApiParam(value = "Query param for 'pageNumber'") @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+            @ApiParam(value = "Query param for 'pageSize'") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,
+            @ApiParam(value = "Query param for 'sortCriteriaList'") @Valid @RequestParam(value = "sortCriteriaList", required = false) List<Sort.Order> sortCriteriaList) {
         return this.publicationService.getPublicationsSortedBySortCriteriaList
                 (pageNumber, pageSize, sortCriteriaList);
+    }
 
     @GetMapping("/byartist/{artistId}")
     public Page<Publication> getPublicationsbyArtist(
-            @PathVariable(value = "artistId") Long artistId,
-            @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-            @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+            @ApiParam(value = "Query param for 'artistId'") @PathVariable(value = "artistId") Long artistId,
+            @ApiParam(value = "Query param for 'pageNumber'") @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+            @ApiParam(value = "Query param for 'pageSize'") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize) {
         return this.publicationService.getFilteredPublicationsByArtist(artistId, pageNumber, pageSize);
     }
 
