@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface AppUserRepository extends JpaRepository <AppUser, Long> {
 
-    List<AppUser> findAllByAuthorities(String authorities);
+    List<AppUser> findAppUserByAuthorities(String authority);
 
     Optional<AppUser> findOneByNickName(String appUserNickname);
 }
