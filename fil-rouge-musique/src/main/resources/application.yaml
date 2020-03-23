@@ -11,13 +11,13 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/shareyourmusic
-    username: change
-    password: change
-    initialization-mode: always
+    username: db-Andy
+    password: Koala75
+#   initialization-mode: always
 
   jpa:
     hibernate:
-      ddl-auto: create
+     ddl-auto: update
 
 #  security:
 #    require-ssl : true

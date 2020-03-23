@@ -70,7 +70,6 @@ insert into artist(id,name) values (nextval('artist_seq_id'), 'Pixies');
 insert into artist(id,name) values (nextval('artist_seq_id'), 'Bob Dylan');
 insert into artist(id,name) values (nextval('artist_seq_id'), 'Avril Lavigne');
 insert into artist(id,name) values (nextval('artist_seq_id'), 'Guns and Roses');
-insert into artist(id,name) values (nextval('artist_seq_id'), 'Bob Dylan');
 insert into artist(id,name) values (nextval('artist_seq_id'), 'The Specials');
 insert into artist(id,name) values (nextval('artist_seq_id'), 'Fred Bueno and his Fuckin Fuckers Band from Bdx');
 

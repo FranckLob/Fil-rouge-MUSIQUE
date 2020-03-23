@@ -41,7 +41,7 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public List<AppUser> getAllAppUsersByAuthority(String authority) {
-        return appUserRepository.findAllByAuthorities(authority);
+        return appUserRepository.findAppUserByAuthorities(authority);
     }
 
     @Override
