@@ -30,7 +30,7 @@ public class AppUserController {
     public ResponseEntity<List<AppUser>> getAllAppUsers(){
         return ResponseEntity.ok(appUserService.getAllAppUsers());
     }
-    @GetMapping("/Bynickname")
+    @GetMapping("/bynickname")
     public ResponseEntity<AppUser> getAppUserByNickName(@RequestParam String nickName) {
         Optional<AppUser> appUserOptional = appUserService.getOneAppUserByNickname(nickName);
         if(appUserOptional.isPresent()) {
@@ -40,7 +40,7 @@ public class AppUserController {
         }
     }
 
-    @GetMapping("/Byauthority")
+    @GetMapping("/byauthority")
     public ResponseEntity<List<AppUser>> getAppUsersByAuthority(@RequestParam String authority){
         return ResponseEntity.ok(appUserService.getAllAppUsersByAuthority(authority));
     }

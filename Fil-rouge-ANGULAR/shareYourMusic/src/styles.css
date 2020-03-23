@@ -1,0 +1,40 @@
+/* Design général */
+.btnlist {
+    border: none;
+    background-color: rgba(5, 8, 209, 0.911);
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 15px;
+    text-align: center;
+}
+
+app-welcome {
+    padding: 15 15%;
+    margin : 30 30%;
+    text-align: center;
+}
+.welcome-choice {
+ display: flex;
+ flex-direction: column;
+}
+
+/* Design top-bar */
+app-top-bar h1, .btnlist {
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+}
+
+app-top-bar h1 {
+    color: #862E67;
+}
+
+app-top-bar .btnlist {
+    font-size: 20px;
+}
+
+app-top-bar div {
+    text-align: center;
+}
