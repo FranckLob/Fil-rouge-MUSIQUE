@@ -1,5 +1,7 @@
 <h1> Share Your Music !</h1>
 
+<div><button class="btnlist" [routerLink]="['/']"> <h2>Welcome Page </h2></button></div>
+
 <div class="welcome-message"> 
 <p> 
     Welcome to "Share Your Music" 
@@ -12,10 +14,9 @@
 </p>
 </div>
 
-<div class="welcome-choice">
-        
-           <button> Sign Up </button>
-            <button> Login </button>
-            <button> Guests </button>
-</div>
+<nav class="welcome-choice">
+    <a routerLink="sign-up" routerLinkActive="active">Sign-up</a>
+    <a routerLink="login"> Login</a>
+    <a routerLink="publication-list"> Publications</a>
+  </nav>
 

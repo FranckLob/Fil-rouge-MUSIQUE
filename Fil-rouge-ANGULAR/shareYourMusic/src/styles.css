@@ -1,4 +1,10 @@
 /* Design général */
+
+body {
+    padding: 0 20%;
+    text-align: center;
+}
+
 .btnlist {
     border: none;
     background-color: rgba(5, 8, 209, 0.911);
@@ -12,13 +18,18 @@
 }
 
 app-welcome {
-    padding: 15 15%;
-    margin : 30 30%;
+    margin-top: 100 px;
+    border: none;
+    background-color: rgba(5, 87, 209, 0.911)1);
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 15px;
     text-align: center;
 }
 .welcome-choice {
  display: flex;
- flex-direction: column;
+ justify-content: space-between;
+ flex-direction: row;
 }
 
 /* Design top-bar */
