@@ -1,14 +1,16 @@
 
+import { User } from "./user";
+import { Artist } from "./artist";
+import { Artwork } from "./artwork";
+import { Title } from "./title";
+
 export interface Publication {
-    id:number;
-    appUser:string;
-    artist:string;
+    id : BigInteger;
+    user : User;
+    artist : Artist;
     date : Date;
-    artwork:string;
-    title:string;
-    style:string;
-    type:string;
-    author:string;
-    composer:string;
-    snippet:string;
+    artwork : Artwork;
+    title : Title;
+    snippet : String;
+
 }

@@ -60,7 +60,7 @@ body {
 app-welcome {
     margin-top: 100 px;
     border: none;
-    background-color: rgba(5, 87, 209, 0.911)1);
+    background-color: blue;
     cursor: pointer;
     border-radius: 6px;
     margin: 15px;
@@ -70,6 +70,14 @@ app-welcome {
  display: flex;
  justify-content: space-between;
  flex-direction: row;
+}
+
+.nickName,
+.email{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 2%;
 }
 
 /* Design top-bar */
