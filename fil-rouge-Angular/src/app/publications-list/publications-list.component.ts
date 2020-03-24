@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicationService } from '../publication.service';
+
 
 @Component({
   selector: 'app-publications-list',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicationsListComponent implements OnInit {
 
-  constructor() { }
+  publications;
+
+  constructor(
+    private publicationService: PublicationService
+    ) { }
 
   ngOnInit() {
+    this.publications = this.publicationService.getPublications();
   }
 
+  edit(publication) {
+    this.publicationService.setPublication(publication);
+    console.log('Edit : ' + publication.title);
+  }
+
+  addPublication() {
+    console.log("entrée dans addPublication");
+  }
 }

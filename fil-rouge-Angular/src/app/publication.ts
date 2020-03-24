@@ -1,3 +1,4 @@
+
 import { User } from "./user";
 import { Artist } from "./artist";
 import { Artwork } from "./artwork";
@@ -11,4 +12,5 @@ export interface Publication {
     artwork : Artwork;
     title : Title;
     snippet : String;
+
 }
