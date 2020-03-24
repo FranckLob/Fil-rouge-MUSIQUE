@@ -1,1 +1,53 @@
+
 /* You can add global styles to this file, and also import other style files */
+/* Design général */
+
+body {
+    padding: 0 20%;
+    text-align: center;
+}
+
+.btnlist {
+    border: none;
+    background-color: rgba(5, 8, 209, 0.911);
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 15px;
+    text-align: center;
+}
+
+app-welcome {
+    margin-top: 100 px;
+    border: none;
+    background-color: rgba(5, 87, 209, 0.911)1);
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 15px;
+    text-align: center;
+}
+.welcome-choice {
+ display: flex;
+ justify-content: space-between;
+ flex-direction: row;
+}
+
+/* Design top-bar */
+app-top-bar h1, .btnlist {
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+}
+
+app-top-bar h1 {
+    color: #862E67;
+}
+
+app-top-bar .btnlist {
+    font-size: 20px;
+}
+
+app-top-bar div {
+    text-align: center;
+}

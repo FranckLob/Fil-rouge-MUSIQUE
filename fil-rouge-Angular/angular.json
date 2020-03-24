@@ -3,6 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    
     "fil-rouge-Angular": {
       "projectType": "application",
       "schematics": {},
@@ -74,6 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
+
             "browserTarget": "fil-rouge-Angular:build"
           }
         },
@@ -121,5 +123,7 @@
         }
       }
     }},
+
   "defaultProject": "fil-rouge-Angular"
+
 }
