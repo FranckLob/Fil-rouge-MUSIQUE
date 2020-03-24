@@ -16,16 +16,19 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'shareYourMusic'`, () => {
+
+  it(`should have as title 'fil-rouge-Angular'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('shareYourMusic');
+    expect(app.title).toEqual('fil-rouge-Angular');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('shareYourMusic app is running!');
+
+    expect(compiled.querySelector('.content span').textContent).toContain('fil-rouge-Angular app is running!');
+
   });
 });
