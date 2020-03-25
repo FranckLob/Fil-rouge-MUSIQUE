@@ -1,9 +1,13 @@
 package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.AppUser;
+import co.simplon.upskilling.filrougemusique.model.Authority;
+import co.simplon.upskilling.filrougemusique.model.AuthorityLevel;
+import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.repository.AppUserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +22,21 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public AppUser createAppUser(AppUser appUserToBeCreated) {
-        Optional<AppUser> appUserOptional = appUserRepository.findById(appUserToBeCreated.getId());
-        if (!(appUserOptional.isPresent())) {
-            return appUserRepository.save(appUserOptional.get());
-        } else {
-            return null;
-        }
+
+            // For new User, Initialization of Authority to ROLE_USER
+            Authority defaultAuthority = new Authority();
+            defaultAuthority.setId(2L);
+            defaultAuthority.setAuthority(AuthorityLevel.USER);
+            List<Authority> authorities = new ArrayList<>();
+            authorities.add(defaultAuthority);
+            appUserToBeCreated.setAuthorities(authorities);
+
+            // For new User, initialization of List of Publications to empty
+            List<Publication> publications = new ArrayList<>();
+            appUserToBeCreated.setPublicationList(publications);
+            // update database
+            return appUserRepository.save(appUserToBeCreated);
+
     }
 
     @Override

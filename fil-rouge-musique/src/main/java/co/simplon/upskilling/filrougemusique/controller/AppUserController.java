@@ -23,7 +23,13 @@ public class AppUserController {
 
     @PostMapping
     public ResponseEntity<AppUser> createAppUser(@RequestBody AppUser appUser) {
-        return ResponseEntity.ok(appUserService.createAppUser(appUser));
+
+        Optional<AppUser> appUserOptional = appUserService.getOneAppUserByNickname(appUser.getNickName());
+        if(!(appUserOptional.isPresent())) {
+            return ResponseEntity.ok(appUserService.createAppUser(appUser));
+        } else {
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).build();
+        }
     }
 
     @GetMapping

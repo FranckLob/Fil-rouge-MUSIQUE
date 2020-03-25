@@ -52,4 +52,24 @@ public class AppUser {
     public List<Publication> getPublicationList() {
         return publicationList;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setPublicationList(List<Publication> publicationList) {
+        this.publicationList = publicationList;
+    }
 }
