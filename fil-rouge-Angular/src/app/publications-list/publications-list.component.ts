@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicationService } from '../publication.service';
+import { User } from '../user';
 
 
 @Component({
@@ -10,13 +11,23 @@ import { PublicationService } from '../publication.service';
 export class PublicationsListComponent implements OnInit {
 
   publications;
+  userLogin:User;
 
   constructor(
     private publicationService: PublicationService
     ) { }
 
   ngOnInit() {
-    this.publications = this.publicationService.getPublications();
+ //   this.publications = this.publicationService.getPublications();
+    // Read user's Login if exists
+    let key = 'login';
+     this.userLogin = JSON.parse(localStorage.getItem(key));
+  }
+
+  getPublicationForUser(user:User){
+    
+  
+
   }
 
   edit(publication) {
