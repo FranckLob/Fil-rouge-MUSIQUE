@@ -3,39 +3,40 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Publication} from './publication';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class PublicationService {
 
-  private publications = [{ 
-    }
-  ];
 
-  items = [];
-  publication: Publication;
+  constructor(private http:HttpClient) { }
 
-  constructor() {
-    this.items = this.publications;
+
+// create publication provided as parameter
+createPublication(publication:Publication) : Observable<Publication> {
+  return this.http.post <Publication>('http://localhost:8080/api/share_music/publication', publication);
+ }
+
+
+
+
+  getPublications() : Observable<any>{
+    return this.http.get <any>('http://localhost:8080/api/publications');
   }
 
-  // getPublications() {
-  //   return this.items;
+
+
+  // addItem(item: Publication) {
+  //   this.items.push(item);
   // }
 
+  // setPublication(item: Publication) {
+  //   this.publication = item;
+  // }
 
-  addItem(item: Publication) {
-    this.items.push(item);
-  }
-
-  setPublication(item: Publication) {
-    this.publication = item;
-  }
-
-  getPublication() {
-    console.log('edit -> ', this.publication.title);
-    return this.publication;
-  }
+  // getPublication() {
+  //   console.log('edit -> ', this.publication.title);
+  //   return this.publication;
+  // }
 
 }
