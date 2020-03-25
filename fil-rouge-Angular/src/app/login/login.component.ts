@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LoginServiceService} from '../login-service.service';
-import { PublicationsListComponent } from '../publications-list/publications-list.component';
+import { Publication} from '../publication';
 
 
 @Component({
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm;
   loginService;
+  publications: Publication[];
   // publicationService;
 
   constructor(private forbuilder : FormBuilder,
@@ -32,16 +33,22 @@ export class LoginComponent implements OnInit {
 
 
     this.loginService.checkUser(login).subscribe(
-      user => {console.log("User exists in Backend")
-      
-    // get on Publication List restreints
-    // this.PublicationService.getPublicationsForUser().subscribe(
-    //   publications => { }
-    // );
-  }
-    );
+      user => {
+        console.log(user + "exists in Backend")
+         // Save login in Localstorage
+
+        let key = 'login';
+        localStorage.setItem(key,JSON.stringify(user));
+        // get on Publication List restreints (Edition possible on user's created Publications)
+
+        // this.PublicationService.getPublicationsForUsers().subscribe(
+        //   publicationPage => {publications = publicationPage.content}
+        // );
+        },
+      err => alert('Wrong login')
+      );
     
-       // clean user creation form once creation completed
+       // clear user creation form once creation completed
        this.loginForm.reset();
   }
 }
