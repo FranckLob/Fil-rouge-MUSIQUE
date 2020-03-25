@@ -151,8 +151,8 @@ public class PublicationServiceImpl implements PublicationService {
         return (pageNumber != null) ? pageNumber : 0;
     }
 
-    private int returnPageSize(Integer pageSize, int size) {
-        return (pageSize != null) ? pageSize : size;
+    private int returnPageSize(Integer pageSize, int sizeDefault) {
+        return (pageSize != null) ? pageSize : sizeDefault;
     }
 
 }

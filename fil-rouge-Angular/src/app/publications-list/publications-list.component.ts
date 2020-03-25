@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicationService } from '../publication.service';
+import { Publication} from '../publication';
 
 
 @Component({
@@ -9,22 +10,29 @@ import { PublicationService } from '../publication.service';
 })
 export class PublicationsListComponent implements OnInit {
 
-  publications;
+  publicationList : Publication[];
 
   constructor(
     private publicationService: PublicationService
     ) { }
+    
 
   ngOnInit() {
-    this.publications = this.publicationService.getPublications();
+    this.publicationService.getPublications().subscribe(
+      publications => {this.publicationList = publications.content;
+        // let index=this.publicationList;
+        console.log("XXXXXXXXXXXX");
+        console.log(this.publicationList)},
+      err => console.log('Table not accessible')
+    );
   }
 
-  edit(publication) {
-    this.publicationService.setPublication(publication);
-    console.log('Edit : ' + publication.title);
-  }
+  // edit(publication) {
+  //   this.publicationService.setPublication(publication);
+  //   console.log('Edit : ' + publication.title);
+  // }
 
-  addPublication() {
-    console.log("entrée dans addPublication");
-  }
+  // addPublication() {
+  //   console.log("entrée dans addPublication");
+  // }
 }

@@ -18,16 +18,29 @@
           <th>Supprimer</th>
         </tr>
         </thead>
-        <tr *ngFor="let item of publications; let i = index">
-          <td>{{ item.appUser }}</td>
+
+       
+        <tr *ngFor="let item of publicationList; let i = index">
+          <td></td>
+          <td></td>
+          <td>{{ item.date | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ item.artwork.name }}</td>
+          <td>{{ item.title.name }}</td>
+          <td>{{ item.title.styleMusic }}</td>
+          <td>{{ item.title.typeMusic }}</td>
+          <td>{{ item.title.author }}</td>
+          <td>{{ item.title.composer }}</td>
+
+          <!-- <td>{{ item.user }}</td>
           <td>{{ item.artist }}</td>
           <td>{{ item.date | date : 'dd/MM/yyyy' }}</td>
           <td>{{ item.artwork }}</td>
           <td>{{ item.title }}</td>
-          <td>{{ item.style }}</td>
-          <td>{{ item.type }}</td>
-          <td>{{ item.author }}</td>
-          <td>{{ item.composer }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.title }}</td> -->
+
           <td>
             <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Ecouter</button></a>
           </td>
@@ -35,7 +48,7 @@
             <button (click)="edit(item)" [routerLink]="['/edit']">Editer</button>
           </td>
           <td>
-            <button (click)="publications.splice(i, 1)">Supprimer</button>
+            <button (click)="publicationList.splice(i, 1)">Supprimer</button>
           </td>
         </tr>
       </table>

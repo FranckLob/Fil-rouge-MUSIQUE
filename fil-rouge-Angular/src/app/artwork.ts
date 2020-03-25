@@ -5,5 +5,5 @@ export interface Artwork {
     name : String;
     editor : String;
     producer : String;
-    publications : Publication[];
+    publicationSet : Publication[];
 }

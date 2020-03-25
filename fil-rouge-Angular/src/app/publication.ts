@@ -6,11 +6,11 @@ import { Title } from "./title";
 
 export interface Publication {
     id : BigInteger;
-    user : User;
+    appUser : User;
     artist : Artist;
     date : Date;
     artwork : Artwork;
     title : Title;
-    snippet : String;
+    snippet : URL;
 
 }
