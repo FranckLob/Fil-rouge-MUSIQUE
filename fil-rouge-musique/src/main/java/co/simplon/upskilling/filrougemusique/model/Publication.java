@@ -25,7 +25,7 @@ public class Publication {
     @ManyToOne
     private Title title;
 
-    private URL snippet;
+    private String snippet;
 
     public Long getId() {
         return id;
@@ -51,6 +51,6 @@ public class Publication {
         return title;
     }
 
-    public URL getSnippet() { return snippet; }
+    public String getSnippet() { return snippet; }
 }
 

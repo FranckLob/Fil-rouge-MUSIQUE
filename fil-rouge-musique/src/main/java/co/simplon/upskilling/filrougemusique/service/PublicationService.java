@@ -65,9 +65,17 @@ public interface PublicationService {
 //    List<Publication> getFilteredPublicationsByType(Type type, Pageable pageable);
 
 
-    Page<Publication> getPublicationsSortedBySortCriteriaList
+    /**
+     * Get sorted by sortedCriteria and sortedDirection
+     * @param pageNumber
+     * @param pageSize
+     * @param sortByCriteria
+     * @param SortDirection
+     * @return
+     */
+    Page<Publication> getPublicationsSortedBySortCriteria
             (Integer pageNumber, Integer pageSize,
-             List<Sort.Order> sortByCriteriaList);
+             String sortByCriteria, String SortDirection);
 
     /**
      * Get the sorted list of publications regarding title

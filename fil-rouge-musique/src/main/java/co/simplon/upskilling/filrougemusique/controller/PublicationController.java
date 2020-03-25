@@ -31,12 +31,13 @@ public class PublicationController {
     }
 
     @GetMapping("/sort")
-    public Page<Publication> getPublicationsSortedBySortCriteriaList(
+    public Page<Publication> getPublicationsSortedBySortCriteria(
             @ApiParam(value = "Query param for 'pageNumber'") @Valid @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
             @ApiParam(value = "Query param for 'pageSize'") @Valid @RequestParam(value = "pageSize", required = false) Integer pageSize,
-            @ApiParam(value = "Query param for 'sortCriteriaList'") @Valid @RequestParam(value = "sortCriteriaList", required = false) List<Sort.Order> sortCriteriaList) {
-        return this.publicationService.getPublicationsSortedBySortCriteriaList
-                (pageNumber, pageSize, sortCriteriaList);
+            @ApiParam(value = "Query param for 'sortCriteria'") @Valid @RequestParam(value = "sortCriteria", required = false) String sortCriteria,
+            @ApiParam(value = "Query param for 'sortDirection'") @Valid @RequestParam(value = "sortDirection", required = false) String sortDirection) {
+        return this.publicationService.getPublicationsSortedBySortCriteria
+                (pageNumber, pageSize, sortCriteria, sortDirection);
     }
 
     @GetMapping("/byartist/{artistId}")
