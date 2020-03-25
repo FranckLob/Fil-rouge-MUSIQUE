@@ -5,7 +5,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 
-application.yaml
+
 
 ### STS ###
 .apt_generated
@@ -29,6 +29,6 @@ application.yaml
 /nbdist/
 /.nb-gradle/
 build/
-
+application.yaml
 ### VS Code ###
 .vscode/
