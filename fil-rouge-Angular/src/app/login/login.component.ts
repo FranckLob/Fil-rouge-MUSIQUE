@@ -14,10 +14,11 @@ export class LoginComponent implements OnInit {
   loginForm;
   loginService;
   publications: Publication[];
+  isLoggedIn: Boolean = false;;
   // publicationService;
 
   constructor(private forbuilder : FormBuilder,
-    loginService: LoginServiceService,
+    loginService: LoginServiceService
     // publicationService: PublicationsServiceService
     ) {
     this.loginForm = this.forbuilder.group (
@@ -29,24 +30,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(login:String) {
+  onSubmit(login) {
 
-
-    this.loginService.checkUser(login).subscribe(
-      user => {
-        console.log(user + "exists in Backend")
+    // this.loginService.checkUser(login).subscribe(
+    //   user => {
+        console.log("exists in Backend")
+       // console.log(user);
          // Save login in Localstorage
 
-        let key = 'login';
-        localStorage.setItem(key,JSON.stringify(user));
+        let key = 'nickName';
+       // localStorage.setItem(key,JSON.stringify(user.nickName));
+        localStorage.setItem(key,JSON.stringify(login.nickName));
         // get on Publication List restreints (Edition possible on user's created Publications)
-
-        // this.PublicationService.getPublicationsForUsers().subscribe(
-        //   publicationPage => {publications = publicationPage.content}
-        // );
-        },
-      err => alert('Wrong login')
-      );
+        this.isLoggedIn = true;
+        
+      //   },
+      // err => alert('Wrong login')
+      // );
     
        // clear user creation form once creation completed
        this.loginForm.reset();

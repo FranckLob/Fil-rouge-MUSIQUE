@@ -1,7 +1,8 @@
-
-<div class="top-bar-cond" >
-  <app-top-bar></app-top-bar>
-</div>
+<ng-template [ngIf]="isLoggedIn">
+  <div class="top-bar-cond" >
+    <app-top-bar></app-top-bar>
+  </div>
+</ng-template>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

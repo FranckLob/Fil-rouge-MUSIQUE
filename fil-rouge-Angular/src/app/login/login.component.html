@@ -1,9 +1,17 @@
-<h1> Login Form </h1>
+<ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
+    <app-top-bar> </app-top-bar>
+    <app-publications-list> </app-publications-list>
+</ng-template>
 
-<form [formGroup]="loginForm" (ngSubmit) = "onSubmit(loginForm.value)">
-    <div id="nickNameDiv">
-        <input id="nickName" type="text"
-         placeholder='Type your nickname' formControlName="nickName">
-         <button class= "button" type="submit"> Validate </button>
-    </div>
-</form>
+<ng-template #loggedOut>
+<div class="formVal"> 
+    <h1> Login Form </h1>
+    <form [formGroup]="loginForm" (ngSubmit) = "onSubmit(loginForm.value)">
+        <div id="nickNameDiv">
+            <input id="nickName" type="text"
+            placeholder='Type your nickname' formControlName="nickName">
+            <button class= "button" type="submit"> Validate </button>
+        </div>
+    </form>
+</div>
+</ng-template>

@@ -1,5 +1,5 @@
-
 <!-- Always show except for Welcome page-->
+
 <h1>Share your Music !</h1>
  
 <head><link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet"></head>
@@ -7,7 +7,20 @@
 <div class="top-bar">
 
     <div class="center">
-      <button id="buttonList" routerLink="publications-list">Revenir à la liste des Publications</button>
+      <button id="buttonList" routerLink="publications-list"> Back to publication list</button>
+    </div>
+
+    <div class="center">
+      <button id="buttonList" routerLink="create-publications"> Create new publication </button>
     </div>
   </div>
 
+  <ng-template [ngIf]="isLoggedIn">
+    <div class ="login">
+        <p> Login :  {{ userLogin }} </p>  
+    </div>
+    <div class="disconnect">
+      <button id="disconnect" (click)="disconnect()" routerLink=""> Disconnect </button>
+    </div>
+
+  </ng-template>

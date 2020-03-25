@@ -12,7 +12,8 @@ import {SignUpServiceService} from '../sign-up-service.service';
 export class SignUpComponent implements OnInit {
 
   signUpForm;
-
+  isLoggedIn:Boolean = false;
+ 
   constructor(private signUpService : SignUpServiceService,
     private formBuilder : FormBuilder) {this.signUpForm = this.formBuilder.group (
     {
@@ -30,7 +31,10 @@ export class SignUpComponent implements OnInit {
     userToAdd.authority = null;
     userToAdd.publicationlist = null;
     this.signUpService.createUser(userToAdd).subscribe(
-      user => { alert ("User " + user + "Created")}
+      user => { alert ("User " + user + "Created");
+      let key = 'nickName';
+      localStorage.setItem(key,JSON.stringify(userToAdd.nickName));
+      this.isLoggedIn = true;}
     );
     
     // clean user creation form once creation completed

@@ -2,7 +2,7 @@ import { Title } from "./title";
 
 export interface Type {
     id : BigInteger;
-    typeMusic : String;
+    type : String;
     titles : Title[];
 
 }

@@ -2,6 +2,6 @@ import { Title } from "./title";
 
 export interface Style {
     id : BigInteger;
-    styleMusic : String;
+    style : String;
     titles : Title[];
 }

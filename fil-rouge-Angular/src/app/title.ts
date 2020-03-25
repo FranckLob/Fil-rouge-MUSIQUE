@@ -5,8 +5,8 @@ import { Publication } from "./publication";
 export interface Title {
     id : BigInteger;
     name : String;
-    typeMusic : Type;
-    styleMusic : Style;
+    type : Type;
+    style : Style;
     author : String;
     composer : String;
     publications : Publication[];
