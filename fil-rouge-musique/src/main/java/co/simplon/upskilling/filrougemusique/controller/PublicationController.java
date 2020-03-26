@@ -55,7 +55,7 @@ public class PublicationController {
             return ResponseEntity.ok(this.publicationService.savePublication(newPublication));
         } catch (MissingEntityException e) {
             System.out.println(e.getLocalizedMessage());
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.status(456).build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }

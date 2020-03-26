@@ -22,6 +22,7 @@ public class AppUser {
     private String email;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "appuser_authority",
             joinColumns = @JoinColumn(name = "appuser_id"),
