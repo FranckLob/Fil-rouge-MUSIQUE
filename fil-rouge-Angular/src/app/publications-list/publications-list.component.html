@@ -1,6 +1,5 @@
 <div class ="login">
     <p> Login : </p>  
-    <p> {{ }} </p>
 </div>
 
 <div class="list">
@@ -12,45 +11,36 @@
           <th>User</th>
           <th>Artist</th>
           <th>Date</th>
-          <th class = "long_cell">Oeuvre</th>
-          <th class="long_cell">Titre</th>
+          <th class = "long_cell">Artwork</th>
+          <th class="long_cell">Title</th>
           <th>Style</th>
           <th>Type</th>
-          <th>Auteur</th>
-          <th>Compositeur</th>
-          <th>Ecouter</th>
-          <th>Editer</th>
-          <th>Supprimer</th>
+          <th>Author</th>
+          <th>Composer</th>
+          <th>Listen</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
         </thead>
 
        
         <tr *ngFor="let item of publicationList; let i = index">
-          <td></td>
-          <td></td>
-          <td>{{ item.date | date : 'dd/MM/yyyy' }}</td>
-          <td>{{ item.artwork.name }}</td>
-          <td>{{ item.title.name }}</td>
-          <td>{{ item.title.styleMusic }}</td>
-          <td>{{ item.title.typeMusic }}</td>
-          <td>{{ item.title.author }}</td>
-          <td>{{ item.title.composer }}</td>
 
-          <!-- <td>{{ item.user }}</td>
-          <td>{{ item.artist }}</td>
+          <td>{{ item.appUser?.nickName }}</td>
+          <td>{{ item.artist?.name }}</td>
           <td>{{ item.date | date : 'dd/MM/yyyy' }}</td>
-          <td>{{ item.artwork }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.title }}</td> -->
+          <td>{{ item.artwork?.name }}</td>
+          <td>{{ item.title?.name }}</td>
+          <td>{{ item.title?.styleMusic }}</td>
+          <td>{{ item.title?.typeMusic }}</td>
+          <td>{{ item.title?.author }}</td>
+          <td>{{ item.title?.composer }}</td>
 
           <td>
             <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Ecouter</button></a>
           </td>
           <td>
-            <button (click)="edit(item)" [routerLink]="['/edit']">Editer</button>
+            <button (click)="edit(item)" [routerLink]="['/createPublication']">Editer</button>
           </td>
           <td>
             <button (click)="publicationList.splice(i, 1)">Supprimer</button>
