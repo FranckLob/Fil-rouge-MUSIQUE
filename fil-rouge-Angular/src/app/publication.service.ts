@@ -8,7 +8,7 @@ import {Publication} from './publication';
 })
 export class PublicationService {
 
-
+  publicationpublication
   constructor(private http:HttpClient) { }
 
 
@@ -23,8 +23,21 @@ export class PublicationService {
     return this.http.post<Publication>(url,publication);
   }
 
+  /**
+   * Update a Publication for considered user/owner
+   */
+  putPublicationObservable(publication : Publication) : Observable<Publication> {
+    const url='http://localhost:8080/api/publications/'+ publication.id;
+    return this.http.put<Publication>(url,publication);
+  }
+
   getPublications() : Observable<any>{
     return this.http.get <any>('http://localhost:8080/api/publications');
+  }
+
+  getPublicationsSortedByCriteria(criteria, direction):Observable<any> {
+    let url = 'http://www.localhost:8080/api/publications/sort?sortCriteria=' + criteria + '&sortDirection=' + direction ;
+    return this.http.get<any>(url);
   }
 
 

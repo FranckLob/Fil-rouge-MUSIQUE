@@ -14,7 +14,5 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  guestShow(){
-    this.guestActivated = true;
-  }
+
 }

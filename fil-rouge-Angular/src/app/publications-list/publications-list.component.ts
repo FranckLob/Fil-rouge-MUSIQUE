@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PublicationService } from '../publication.service';
 import { Publication} from '../publication';
 import { User } from '../user';
+import { IsLoggedInService } from '../is-logged-in.service';
+
 
 
 @Component({
@@ -17,7 +19,8 @@ export class PublicationsListComponent implements OnInit {
   isLoggedIn : Boolean = false;
 
   constructor(
-    private publicationService: PublicationService
+    private publicationService: PublicationService,
+    private isLoggedInservice: IsLoggedInService
     ) { }
     
 
@@ -27,10 +30,27 @@ export class PublicationsListComponent implements OnInit {
       publications => {this.publicationList = publications.content;
         // let index=this.publicationList;
         console.log("XXXXXXXXXXXX");
-        console.log(this.publicationList)},
+        console.log(this.publicationList)
+        this.isLoggedInservice.ngOnInit();
+        this.isLoggedIn = this.isLoggedInservice.isLoggedIn 
+        this.userLogin = this.isLoggedInservice.userLogin},
       err => console.log('Table not accessible')
     );
   }
+  onSortUser(userCrit){
+    
+    let direction = "ASC";
+    this.publicationService.getPublicationsSortedByCriteria(userCrit,direction).subscribe(
+        publications => {this.publicationList = publications.content;
+          this.isLoggedInservice.ngOnInit();
+          this.isLoggedIn = this.isLoggedInservice.isLoggedIn 
+          this.userLogin = this.isLoggedInservice.userLogin},
+        err => console.log('KO on Sort')
+        
+    )
+  }
+    
+  
 
   // edit(publication) {
   //   this.publicationService.setPublication(publication);
