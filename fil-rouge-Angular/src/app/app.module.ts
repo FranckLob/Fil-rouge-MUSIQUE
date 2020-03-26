@@ -20,7 +20,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     SignUpComponent,
     LoginComponent,
     PublicationsListComponent,
-    TopBarComponent
+    TopBarComponent,
+    // CreatePublicationComponent
     
   ],
   imports: [
@@ -32,6 +33,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
       { path: 'sign-up', component: SignUpComponent},    // chemin du path correspond à ce qui est saisi dans "route.param" 
       { path: 'login', component: LoginComponent},
       { path: 'publications-list', component: PublicationsListComponent}, 
+      // { path: 'createPublication', component: createPublicationComponent}, 
       ]
     )
   ],
