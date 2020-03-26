@@ -1,8 +1,8 @@
 import { Title } from "./title";
 
 export interface Type {
-    id : BigInteger;
-    type : String;
+    id : number;
+    type : string;
     titles : Title[];
 
 }

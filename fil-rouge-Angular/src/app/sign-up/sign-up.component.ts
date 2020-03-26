@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { User } from '../user';
 import {SignUpServiceService} from '../sign-up-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class SignUpComponent implements OnInit {
   isLoggedIn:Boolean = false;
  
   constructor(private signUpService : SignUpServiceService,
-    private formBuilder : FormBuilder) {this.signUpForm = this.formBuilder.group (
+    private formBuilder : FormBuilder,
+    private routerNav:Router ) {this.signUpForm = this.formBuilder.group (
     {
       nickName : '',
       email : ''
@@ -31,15 +33,15 @@ export class SignUpComponent implements OnInit {
     userToAdd.authority = null;
     userToAdd.publicationlist = null;
     this.signUpService.createUser(userToAdd).subscribe(
-      user => { alert ("User " + user + "Created");
+      user => { alert ('User ' + user.nickName + ' created');
       let key = 'nickName';
       localStorage.setItem(key,JSON.stringify(userToAdd.nickName));
-      this.isLoggedIn = true;}
+      this.isLoggedIn = true;
+      // Got to PublicationList with Login provided on top-bar
+      this.routerNav.navigate(['publications-list']);},
+      err => alert("No creation Error")
     );
     
-    // clean user creation form once creation completed
-    this.signUpForm.reset();
-    console.warn('After reset ', userToAdd);
   }
 
 }

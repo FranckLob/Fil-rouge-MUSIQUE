@@ -1,5 +1,3 @@
-<!-- Always show except for Welcome page-->
-
 <h1>Share your Music !</h1>
  
 <head><link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet"></head>
@@ -15,9 +13,11 @@
     </div>
   </div>
 
-  <ng-template [ngIf]="isLoggedIn">
+  <!-- Show only once connected-->
+
+  <ng-template [ngIf]="isLoggedInservice.isLoggedIn">
     <div class ="login">
-        <p> Login :  {{ userLogin }} </p>  
+        <p> Login :  {{ isLoggedInservice.userLogin }} </p>  
     </div>
     <div class="disconnect">
       <button id="disconnect" (click)="disconnect()" routerLink=""> Disconnect </button>

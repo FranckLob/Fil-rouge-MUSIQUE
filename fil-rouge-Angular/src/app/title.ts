@@ -3,12 +3,12 @@ import { Style } from "./style";
 import { Publication } from "./publication";
 
 export interface Title {
-    id : BigInteger;
-    name : String;
+    id : number;
+    name : string;
     type : Type;
     style : Style;
-    author : String;
-    composer : String;
+    author : string;
+    composer : string;
     publications : Publication[];
 
 

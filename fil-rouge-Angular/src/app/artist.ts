@@ -1,7 +1,7 @@
 import { Publication } from "./publication";
 
 export interface Artist {
-    id : BigInteger;
-    name : String;
+    id : number;
+    name : string;
     publicationSet : Publication[];
 }

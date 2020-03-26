@@ -16,7 +16,12 @@ export class SignUpServiceService {
 
 // create user provided as parameter
 createUser(user:User) : Observable<User> {
-  return this.http.post <User>('http://localhost:8080/api/share_music/user', user);
+  console.log("*****************");
+  console.log(user);
+  console.log('http://localhost:8080/api/share_music/user/')
+  console.log("****************");
+
+  return this.http.post <User>('http://localhost:8080/api/share_music/user/', user);
  }
 
 

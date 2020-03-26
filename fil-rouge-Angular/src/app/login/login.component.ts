@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LoginServiceService} from '../login-service.service';
 import { Publication} from '../publication';
+import { Router } from '@angular/router';
+import { IsLoggedInService } from '../is-logged-in.service';
+
 
 
 @Component({
@@ -12,14 +15,14 @@ import { Publication} from '../publication';
 export class LoginComponent implements OnInit {
 
   loginForm;
-  loginService;
   publications: Publication[];
-  isLoggedIn: Boolean = false;;
+  //isLoggedIn: Boolean = false;;
   // publicationService;
 
   constructor(private forbuilder : FormBuilder,
-    loginService: LoginServiceService
-    // publicationService: PublicationsServiceService
+    private loginService: LoginServiceService,
+    private routerNav: Router,
+    private isLoggedService: IsLoggedInService
     ) {
     this.loginForm = this.forbuilder.group (
     {
@@ -32,21 +35,26 @@ export class LoginComponent implements OnInit {
 
   onSubmit(login) {
 
-    // this.loginService.checkUser(login).subscribe(
-    //   user => {
+    console.log(login.nickName);
+    
+    this.loginService.checkUser(login.nickName).subscribe(
+      user => {
         console.log("exists in Backend")
-       // console.log(user);
-         // Save login in Localstorage
+        console.log(user.nickName);
+        //   Save login in Localstorage
 
         let key = 'nickName';
-       // localStorage.setItem(key,JSON.stringify(user.nickName));
-        localStorage.setItem(key,JSON.stringify(login.nickName));
-        // get on Publication List restreints (Edition possible on user's created Publications)
-        this.isLoggedIn = true;
+        localStorage.setItem(key,JSON.stringify(user.nickName));
+
+        // Activate isLoginFlags for top-bar-component show
+        this.isLoggedService.ngOnInit();
         
-      //   },
-      // err => alert('Wrong login')
-      // );
+        // Go to PublicationList with Login provided on top-bar (Edition possible on user's created Publications only)
+        this.routerNav.navigate(['publications-list']);      
+        },
+      // Show error wrong login
+      err => alert('Wrong login')
+      );
     
        // clear user creation form once creation completed
        this.loginForm.reset();

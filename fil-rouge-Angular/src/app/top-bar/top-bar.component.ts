@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IsLoggedInService } from '../is-logged-in.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,24 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class TopBarComponent implements OnInit {
 
   userLogin:String;
-  isLoggedIn: Boolean = false;
+ 
 
-  constructor() { }
+  constructor(private isLoggedInservice: IsLoggedInService) {
+    isLoggedInservice.userLogin = this.isLoggedInservice.userLogin;
+   }
 
   ngOnInit() {
-
-        // Read user's Login if exists
-        let key = 'nickName';
-        this.userLogin = JSON.parse(localStorage.getItem(key));
-    
-         if (localStorage.length > 0) {
-          this.isLoggedIn = true;
-         }
-    
   }
 
   disconnect(){
       localStorage.clear();
-      this.isLoggedIn = false;
+      this.isLoggedInservice.ngOnInit();
   }
+
 }
