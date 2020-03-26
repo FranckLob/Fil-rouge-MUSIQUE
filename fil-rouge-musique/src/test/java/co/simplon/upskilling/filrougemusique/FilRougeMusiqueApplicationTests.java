@@ -22,12 +22,19 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import co.simplon.upskilling.filrougemusique.service.*;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FilRougeMusiqueApplicationTests {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
+
+    @Autowired
+    private AppUserServiceImpl appUserService;
+    @Autowired
+    private ArtistServiceImpl artistService;
 
     @Test
     void getPublications() {
@@ -56,18 +63,21 @@ class FilRougeMusiqueApplicationTests {
         assertThat(publications).isNotNull();
     }
 
-//    @Test
-//    void addPublication() {
-//        AppUser appUser=new AppUser("Andrea","andrea.jouanin.devweb@gmail.com");
-//        Artist artist=new Artist("Fat Boy Slim");
-//        Publication publicationTest = new Publication(appUser,artist,null,null,null);
-//        HttpEntity<Publication> publicationTestHttpEntity = new HttpEntity<Publication>(publicationTest);
-//        ResponseEntity<Publication> responseEntity = this.testRestTemplate.postForEntity("/api/publications", publicationTestHttpEntity, Publication.class);
-//        Publication createdPublicationTest = responseEntity.getBody();
-//        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(createdPublicationTest.getArtist()).isEqualTo(artist);
-//    }
-//    //{"id":99,"appUser":{"id":1,"nickName":"Andrea","email":"andrea.jouanin.devweb@gmail.com","authorities":[{"id":1,"authority":"ADMIN"}]},"artist":{"id":10,"name":"Fred Bueno and his Fuckin Fuckers Band from Bdx"},"date":"2020-03-04T23:00:00.000+0000","artwork":null,"title":null,"snippet":null}
+    @Test
+    void addPublication() {
+        Publication publicationTest = new Publication();
+        publicationTest.setAppUser(this.appUserService.getOneAppUserByNickname("Franck").get());
+        publicationTest.setArtist(this.artistService.getArtistByName("Pixies"));
+        publicationTest.setArtwork(null);
+        publicationTest.setDate(null);
+        publicationTest.setSnippet(null);
+        publicationTest.setTitle(null);
+        HttpEntity<Publication> publicationTestHttpEntity = new HttpEntity<Publication>(publicationTest);
+        ResponseEntity<Publication> responseEntity = this.testRestTemplate.postForEntity("/api/publications", publicationTestHttpEntity, Publication.class);
+        Publication createdPublicationTest = responseEntity.getBody();
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(createdPublicationTest.getArtist().getName()).isEqualTo("Pixies");
+    }
 
     @Test
     void deleteOnePublication() {

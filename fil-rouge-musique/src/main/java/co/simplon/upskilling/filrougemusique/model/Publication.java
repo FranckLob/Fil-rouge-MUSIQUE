@@ -52,5 +52,33 @@ public class Publication {
     }
 
     public String getSnippet() { return snippet; }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setArtwork(Artwork artwork) {
+        this.artwork = artwork;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
+    public void setSnippet(String snippet) {
+        this.snippet = snippet;
+    }
 }
 
