@@ -23,7 +23,6 @@ import { PublicationCreateComponent } from './publication-create/publication-cre
     PublicationsListComponent,
     TopBarComponent,
     PublicationCreateComponent
-    
   ],
   imports: [
     BrowserModule,
