@@ -13,10 +13,15 @@ export class PublicationService {
 
 
 // create publication provided as parameter
-createPublication(publication:Publication) : Observable<Publication> {
-  return this.http.post <Publication>('http://localhost:8080/api/share_music/publication', publication);
- }
+//  createPublication(publication:Publication) : Observable<Publication> {
+//  return this.http.post <Publication>('http://localhost:8080/api/share_music/publication', publication);
+// }
 
+
+  postPublicationObservable(publication : Publication) : Observable<Publication> {
+    const url='http://localhost:8080/api/publications';
+    return this.http.post<Publication>(url,publication);
+  }
 
   getPublications() : Observable<any>{
     return this.http.get <any>('http://localhost:8080/api/publications');

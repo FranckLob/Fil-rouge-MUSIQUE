@@ -1,3 +1,4 @@
+
 <div class="list">
     
     <section id="publications-view">
@@ -13,7 +14,7 @@
           <th>Type</th>
           <th>Author</th>
           <th>Composer</th>
-          <th>Listen </th>
+          <th>Listen</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -21,6 +22,7 @@
 
        
         <tr *ngFor="let item of publicationList; let i = index">
+
           <td>{{ item.appUser?.nickName }}</td>
           <td>{{ item.artist?.name }} </td>
           <td>{{ item?.date | date : 'dd/MM/yyyy' }}</td>
@@ -34,7 +36,7 @@
             <a href="{{item?.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td>
-            <button (click)="edit(item)" [routerLink]="['/updatePublication']">Edit</button>
+            <button (click)="edit(item)" [routerLink]="['/createPublication']">Editer</button>
           </td>
           <td>
             <button (click)="publicationList.splice(i, 1)">Delete</button>
