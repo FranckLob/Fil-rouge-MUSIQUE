@@ -19,6 +19,12 @@ public interface PublicationService {
     Page<Publication> getAllPublications(Integer pageNumber, Integer pageSize);
 
     /**
+     * Get one publication by its id
+     * @param publicationId
+     * @return
+     */
+    Publication getPublicationById(Long publicationId);
+    /**
      * Get the filtered list of publications regarding user
      *
      * @return the filtered list
