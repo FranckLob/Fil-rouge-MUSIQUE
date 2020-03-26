@@ -13,7 +13,8 @@ export class PublicationsListComponent implements OnInit {
 
 
   publicationList : Publication[];
-  userLogin:User;
+  userLogin:String;
+  isLoggedIn : Boolean = false;
 
   constructor(
     private publicationService: PublicationService
@@ -21,9 +22,6 @@ export class PublicationsListComponent implements OnInit {
     
 
   ngOnInit() {
-    // Read user's Login if exists
-    let key = 'login';
-     this.userLogin = JSON.parse(localStorage.getItem(key));
     
     this.publicationService.getPublications().subscribe(
       publications => {this.publicationList = publications.content;
@@ -32,8 +30,6 @@ export class PublicationsListComponent implements OnInit {
         console.log(this.publicationList)},
       err => console.log('Table not accessible')
     );
-    
-
   }
 
   // edit(publication) {

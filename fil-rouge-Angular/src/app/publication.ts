@@ -5,12 +5,12 @@ import { Artwork } from "./artwork";
 import { Title } from "./title";
 
 export interface Publication {
-    id : BigInteger;
+    id : number;
     appUser : User;
     artist : Artist;
     date : Date;
     artwork : Artwork;
     title : Title;
-    snippet : String;
+    snippet : string;
 
 }
