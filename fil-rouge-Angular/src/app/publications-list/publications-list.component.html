@@ -13,11 +13,9 @@
           <th class = "short_cell"> <a (click) = 'sortOnType()'    >Type     </a> </th>
           <th class = "short_cell"> <a (click) = 'sortOnAuthor()'  >Author   </a> </th>
           <th class = "short_cell"> <a (click) = 'sortOnComposer()'>Composer </a> </th>
-          <th class = "short_cell"> Listen                                       </th>
-          <div *ngIf="isLoggedIn">
-            <th class = "short_cell" > Edit                                      </th>
-            <th class = "short_cell" > Delete                                    </th>
-          </div>
+          <th class = "short_cell"> Listen                                        </th>
+          <th *ngIf="isLoggedIn" class = "short_cell" > Edit                      </th>
+          <th *ngIf="isLoggedIn" class = "short_cell" > Delete                    </th>
         </tr>
         </thead>
         <tr *ngFor="let item of publicationList; let i = index">
