@@ -21,7 +21,7 @@ export class PublicationsListComponent implements OnInit {
 
   constructor(
     private publicationService: PublicationService,
-    private isLoggedInService: IsLoggedInService
+    private isLoggedInService: IsLoggedInService,
     private router : Router
     ) { }
     
@@ -46,7 +46,7 @@ export class PublicationsListComponent implements OnInit {
       direction="DESC";
       this.ascendingSort = true;
     }
-    this.publicationService.getPublicationsSortedByCriteria("user",direction).subscribe(
+    this.publicationService.getPublicationsSortedByCriteria("appUser",direction).subscribe(
         publications => {this.publicationList = publications.content;
                          this.isLoggedInService.ngOnInit();
                          this.isLoggedIn = this.isLoggedInService.isLoggedIn 
