@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LoginServiceService} from '../login-service.service';
 import { Publication} from '../publication';
+import { Router } from '@angular/router';
+import { IsLoggedInService } from '../is-logged-in.service';
+
 
 
 @Component({
@@ -12,13 +15,12 @@ import { Publication} from '../publication';
 export class LoginComponent implements OnInit {
 
   loginForm;
-  loginService;
   publications: Publication[];
-  // publicationService;
 
   constructor(private forbuilder : FormBuilder,
-    loginService: LoginServiceService,
-    // publicationService: PublicationsServiceService
+    private loginService: LoginServiceService,
+    private routerNav: Router,
+    private isLoggedService: IsLoggedInService
     ) {
     this.loginForm = this.forbuilder.group (
     {
@@ -29,23 +31,22 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(login:String) {
-
-
-    this.loginService.checkUser(login).subscribe(
+  onSubmit(login) {
+    
+    this.loginService.checkUser(login.nickName).subscribe(
       user => {
-        console.log(user + "exists in Backend")
-         // Save login in Localstorage
+        //   Save login in Localstorage
+        let key = 'nickName';
+        localStorage.setItem(key,JSON.stringify(user.nickName));
 
-        let key = 'login';
-        localStorage.setItem(key,JSON.stringify(user));
-        // get on Publication List restreints (Edition possible on user's created Publications)
-
-        // this.PublicationService.getPublicationsForUsers().subscribe(
-        //   publicationPage => {publications = publicationPage.content}
-        // );
+        // Activate isLoginFlags for top-bar-component show
+        this.isLoggedService.ngOnInit();
+        
+        // Go to PublicationList with Login provided on top-bar (Edition possible on user's created Publications only)
+        this.routerNav.navigate(['publications-list']);      
         },
-      err => alert('Wrong login')
+      // Show error wrong login
+      err => alert('Wrong login, please try again')
       );
     
        // clear user creation form once creation completed

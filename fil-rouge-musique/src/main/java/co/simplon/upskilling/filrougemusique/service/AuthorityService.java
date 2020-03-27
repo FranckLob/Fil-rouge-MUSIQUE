@@ -1,11 +1,6 @@
 package co.simplon.upskilling.filrougemusique.service;
 
-import co.simplon.upskilling.filrougemusique.model.AppUser;
-import co.simplon.upskilling.filrougemusique.model.Authority;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface AuthorityService {

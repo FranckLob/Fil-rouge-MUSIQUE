@@ -18,14 +18,14 @@
           <th class = "short_cell"> <a (click) = 'sortOnAuthor()'  >Author  </a> </th>
           <th class = "short_cell"> <a (click) = 'sortOnComposer()'>Composer</a> </th>
           <th class = "short_cell"> Listen                                       </th>
-          <th class = "short_cell"> Edit                                         </th>
-          <th class = "short_cell"> Delete                                       </th>
+          <th class = "short_cell" *ngIf="isLoggedIn"> Edit                      </th>
+          <th class = "short_cell" *ngIf="isLoggedIn"> Delete                    </th>
         </tr>
         </thead>
         <tr *ngFor="let item of publicationList; let i = index">
           <td>{{ item.appUser?.nickName }}</td>
-          <td>{{ item.artist?.name }}</td>
-          <td>{{ item.date | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ item.artist?.name }} </td>
+          <td>{{ item?.date | date : 'dd/MM/yyyy' }}</td>
           <td>{{ item.artwork?.name }}</td>
           <td>{{ item.title?.name }}</td>
           <td>{{ item.title?.style }}</td>
@@ -36,10 +36,11 @@
             <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td>
-            <button (click)="edit(item)" [routerLink]="['/publication-update']">Edit</button>
+            <button (click)="edit(item)" *ngIf="isLoggedIn && userLogin == item.appUser?.nickName"
+                    [routerLink]="['/publications-list', item.id]">Edit</button>
           </td>
           <td>
-            <button (click)="deletePublication(publicationList[i])">Delete</button>
+            <button (click)="deletePublication(publicationList[i])" *ngIf="isLoggedIn">Delete</button>
           </td>
         </tr>
       </table>

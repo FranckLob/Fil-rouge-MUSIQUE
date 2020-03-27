@@ -29,7 +29,9 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
+
 ### ignore yaml ###
 ./src/main/resources/application.yaml
+
 ### VS Code ###
 .vscode/

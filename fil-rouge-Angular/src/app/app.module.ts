@@ -35,9 +35,10 @@ import { PublicationUpdateComponent } from './publication-update/publication-upd
       { path: 'sign-up', component: SignUpComponent},    // chemin du path correspond à ce qui est saisi dans "route.param" 
       { path: 'login', component: LoginComponent},
       { path: 'publications-list', component: PublicationsListComponent}, 
-      { path: 'publication-create', component: PublicationCreateComponent}
+      { path: 'publication-create', component: PublicationCreateComponent},
+      { path: 'publication-update', component: PublicationUpdateComponent}
       ]
-    )
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,4 @@ export interface Title {
     author : string;
     composer : string;
     publications : Publication[];
-
-
 }

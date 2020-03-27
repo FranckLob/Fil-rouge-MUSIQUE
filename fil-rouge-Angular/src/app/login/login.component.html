@@ -1,9 +1,11 @@
-<h1> Login Form </h1>
+<div class="formVal"> 
+    <h1> Login Form </h1>
+    <form [formGroup]="loginForm" (ngSubmit) = "onSubmit(loginForm.value)">
+        <div id="nickNameDiv">
+            <input id="nickName" type="text"
+            placeholder='Type your nickname' formControlName="nickName">
+            <button class= "button" type="submit"> Validate </button>
+        </div>
+    </form>
+</div>
 
-<form [formGroup]="loginForm" (ngSubmit) = "onSubmit(loginForm.value)">
-    <div id="nickNameDiv">
-        <input id="nickName" type="text"
-         placeholder='Type your nickname' formControlName="nickName">
-         <button class= "button" type="submit"> Validate </button>
-    </div>
-</form>

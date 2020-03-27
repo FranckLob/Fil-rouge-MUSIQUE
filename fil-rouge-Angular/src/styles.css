@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 /* Design général */
 
+
  :root {
-    --color-darker: #254457;
-    --color-dark: #2677ad;
+ /*   --color-darker: #254457;
+    --color-dark: #2677ad; */
     --color-lighter: #bbe1fa;
-    --color-light: #4386b3;
-  }
+    --color-light: #3282b8;
+  } 
    
   * {
     font-family: 'Roboto', Arial, sans-serif;
@@ -23,7 +24,7 @@
     text-align: center;
     width: 90%;
     margin: auto;
-    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Roboto', sans-serif;
   }
   
   h1,
@@ -97,4 +98,10 @@ app-top-bar .btnlist {
 
 app-top-bar div {
     text-align: center;
+}
+
+.login>p{
+  color: blue ;
+  font-style: italic;
+  font-weight: 700;
 }

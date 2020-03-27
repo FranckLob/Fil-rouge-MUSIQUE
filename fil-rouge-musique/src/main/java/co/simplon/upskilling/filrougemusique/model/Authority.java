@@ -1,7 +1,6 @@
 package co.simplon.upskilling.filrougemusique.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -44,7 +43,5 @@ public class Authority {
     public void setAppUsers(List<AppUser> appUsers) {
         this.appUsers = appUsers;
     }
-
-
 
 }

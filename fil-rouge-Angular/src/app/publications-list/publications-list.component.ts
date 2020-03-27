@@ -3,7 +3,7 @@ import { PublicationService } from '../publication.service';
 import { Publication} from '../publication';
 import { User } from '../user';
 import { IsLoggedInService } from '../is-logged-in.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publications-list',
@@ -14,25 +14,21 @@ export class PublicationsListComponent implements OnInit {
 
 
   publicationList : Publication[];
-  userLogin:User;
+  userLogin:String;
   isLoggedIn : Boolean = false;
+  publicationToFeedForm : Publication;
   ascendingSort : Boolean = true;
 
   constructor(
     private publicationService: PublicationService,
     private isLoggedInService: IsLoggedInService
+    private router : Router
     ) { }
     
 
   ngOnInit() {
-    // Read user's Login if exists
-    // let key = 'login';
-    //  this.userLogin = JSON.parse(localStorage.getItem(key));
-    
     this.publicationService.getPublications().subscribe(
       publications => {this.publicationList = publications.content;
-        console.log("XXXXXXXXXXXX");
-        console.log(this.publicationList)
         this.isLoggedInService.ngOnInit();
         this.isLoggedIn = this.isLoggedInService.isLoggedIn 
         this.userLogin = this.isLoggedInService.userLogin},
@@ -225,21 +221,9 @@ export class PublicationsListComponent implements OnInit {
       }
     }
 
-  // edit(publication) {
-  //   this.publicationService.setPublication(publication);
-  //   console.log('Edit : ' + publication.title);
-  // }
-
-  // addPublication() {
-  //   console.log("entrée dans addPublication");
-  // }
-
-  // sortPublication(criteria) {  //declanché sur onChange sur le select du critere de tri.
-  //   console.log("criteria : "+criteria);
-  //   console.log("this.sortForm : "+this.sortForm);
-  //   // this.aliments.sort(this.alimentsService.tri); 
-  //   this.publicationList = this.publicationService.publicationList.sort(this.alimentsService.tri);
-  // }
+  edit(publication) {
+      this.router.navigate(['publication-update'], publication);   
+   }
 
 
 }

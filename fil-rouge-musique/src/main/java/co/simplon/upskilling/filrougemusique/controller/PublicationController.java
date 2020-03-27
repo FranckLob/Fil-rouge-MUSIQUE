@@ -1,20 +1,16 @@
 package co.simplon.upskilling.filrougemusique.controller;
 
+import co.simplon.upskilling.filrougemusique.exception.ExistingEntityException;
 import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.service.PublicationService;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("api/publications")
@@ -44,6 +40,7 @@ public class PublicationController {
                 (pageNumber, pageSize, sortCriteria, sortDirection);
     }
 
+
     @GetMapping("/byartist/{artistId}")
     public Page<Publication> getPublicationsbyArtist(
             @ApiParam(value = "Query param for 'artistId'") @PathVariable(value = "artistId") Long artistId,
@@ -55,7 +52,23 @@ public class PublicationController {
     @PostMapping
     public ResponseEntity<Publication> createPublication(@RequestBody Publication newPublication) {
         try {
-            return ResponseEntity.ok(this.publicationService.savePublication(newPublication));
+                return ResponseEntity.ok(this.publicationService.savePublication(newPublication));
+        } catch (MissingEntityException e) {
+            System.out.println(e.getLocalizedMessage());
+            return ResponseEntity.status(456).build();
+        } catch (ExistingEntityException e) {
+            System.out.println(e.getLocalizedMessage());
+            return ResponseEntity.status(457).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<Publication> updatePublication (@RequestBody Publication publicationToUpdate) {
+        try {
+            return ResponseEntity.ok(this.publicationService.savePublication(publicationToUpdate));
         } catch (MissingEntityException e) {
             System.out.println(e.getLocalizedMessage());
             return ResponseEntity.status(456).build();

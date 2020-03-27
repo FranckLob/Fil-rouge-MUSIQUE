@@ -1,11 +1,8 @@
 package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.Artist;
-import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.repository.ArtistRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,11 +23,13 @@ public class ArtistServiceImpl implements ArtistService {
             return null;
         }
     }
+
     @Override
     public Artist createArtist(Artist artist) {
         // If artist already exist => do not create it inside of Artist table
-        if(artistRepository.findById(artist.getId()) == null){
-            artistRepository.save(artist);
+        //if id==null then save
+        if(artist.getId() == null){
+            return artistRepository.save(artist);
         }
         return artist;
     }

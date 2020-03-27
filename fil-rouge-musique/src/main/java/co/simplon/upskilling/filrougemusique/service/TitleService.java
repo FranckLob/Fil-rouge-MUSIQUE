@@ -4,8 +4,6 @@ import co.simplon.upskilling.filrougemusique.model.Title;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public interface TitleService {
 
@@ -36,4 +34,6 @@ public interface TitleService {
      * @return void
      */
     void deleteTitle(Long titleToDeleteId);
+
+    Title getTitleByName(String titleName);
 }

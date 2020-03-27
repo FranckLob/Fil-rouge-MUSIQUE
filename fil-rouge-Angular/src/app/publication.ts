@@ -11,6 +11,6 @@ export interface Publication {
     date : Date;
     artwork : Artwork;
     title : Title;
-    snippet : String;
+    snippet : string;
 
 }
