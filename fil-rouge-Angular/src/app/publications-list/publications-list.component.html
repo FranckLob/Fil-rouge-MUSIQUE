@@ -24,8 +24,8 @@
           <td>{{ item?.date | date : 'dd/MM/yyyy' }}</td>
           <td>{{ item.artwork?.name }}</td>
           <td>{{ item.title?.name }}</td>
-          <td>{{ item.title?.style.name }}</td>
-          <td>{{ item.title?.type.name }}</td>
+          <td>{{ item.title?.style.style }}</td>
+          <td>{{ item.title?.type.type }}</td>
           <td>{{ item.title?.author }}</td>
           <td>{{ item.title?.composer }}</td>
           <td>
@@ -40,4 +40,6 @@
           </td>
         </tr>
       </table>
+      <button (click)="changePagination('rewind')" *ngIf="!firstPage">-</button>
+      <button (click)="changePagination('forward')" *ngIf="!lastPage">+</button>
       
