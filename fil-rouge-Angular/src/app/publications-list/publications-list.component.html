@@ -1,8 +1,4 @@
 <div class="list">
-    
-  <!-- <ul>
-    <li ng-repeat="element in tableau">{{element}}</li>
-  </ul> -->
 
     <section id="publications-view">
       <table>
@@ -35,12 +31,12 @@
           <td>
             <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
-          <td>
-            <button (click)="edit(item)" *ngIf="isLoggedIn && userLogin == item.appUser?.nickName"
+          <td *ngIf="isLoggedIn">
+            <button (click)="edit(item)" *ngIf="userLogin == item.appUser?.nickName"
                     [routerLink]="['/publications-list', item.id]">Edit</button>
           </td>
-          <td>
-            <button (click)="deletePublication(publicationList[i])" *ngIf="isLoggedIn">Delete</button>
+          <td *ngIf="isLoggedIn">
+            <button (click)="deletePublication(publicationList[i])" *ngIf="userLogin == item.appUser?.nickName">Delete</button>
           </td>
         </tr>
       </table>

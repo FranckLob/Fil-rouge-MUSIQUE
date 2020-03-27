@@ -21,7 +21,7 @@ export class PublicationsListComponent implements OnInit {
 
   constructor(
     private publicationService: PublicationService,
-    private isLoggedInService: IsLoggedInService
+    private isLoggedInService: IsLoggedInService,
     private router : Router
     ) { }
     
@@ -35,6 +35,8 @@ export class PublicationsListComponent implements OnInit {
       err => console.log('Table not accessible')
     );
   }
+
+  
 
   sortOnUser(){
     let direction;

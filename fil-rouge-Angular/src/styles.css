@@ -3,8 +3,8 @@
 
 
  :root {
- /*   --color-darker: #254457;
-    --color-dark: #2677ad; */
+    --color-darker: #254457; 
+    --color-dark: #2677ad; 
     --color-lighter: #bbe1fa;
     --color-light: #3282b8;
   } 
@@ -24,7 +24,7 @@
     text-align: center;
     width: 90%;
     margin: auto;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
   }
   
   h1,
@@ -49,10 +49,9 @@ body {
 
 .btnlist {
     border: none;
-    background-color: var(--color-dark);
     cursor: pointer;
     display: inline-block;
-    color: white;
+    color: black;
     font-weight: bold;
     border-radius: 6px;
     margin: 15px;
@@ -62,7 +61,7 @@ body {
 app-welcome {
     margin-top: 100 px;
     border: none;
-    background-color: var(--color-lighter);
+    background-color: var(--color-darker);
     cursor: pointer;
     border-radius: 6px;
     margin: 15px;
@@ -72,6 +71,8 @@ app-welcome {
  display: flex;
  justify-content: space-between;
  flex-direction: row;
+ 
+ 
 }
 
 .nickName,
