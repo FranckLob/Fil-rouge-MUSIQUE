@@ -2,7 +2,6 @@ package co.simplon.upskilling.filrougemusique.controller;
 
 import co.simplon.upskilling.filrougemusique.model.AppUser;
 import co.simplon.upskilling.filrougemusique.service.AppUserService;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,5 +67,4 @@ public class AppUserController {
             appUserService.deleteAppUser(appUserId);
         }
     }
-
 }

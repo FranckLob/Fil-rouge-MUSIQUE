@@ -1,12 +1,7 @@
 package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.Artist;
-import co.simplon.upskilling.filrougemusique.model.Publication;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface ArtistService {
@@ -25,13 +20,5 @@ public interface ArtistService {
      * One optional Artist
      */
     Artist getArtistByName(String artistName);
-
-//    /**
-//     * Get all Publications related to one Artist
-//     * @param artist
-//     * @return Page of Publications
-//     */
-//
-//    Page<Publication> getPublicationsByArtist(Artist artist);
 
 }

@@ -8,8 +8,8 @@
       <button id="buttonList" routerLink="publications-list"> Back to publication list</button>
     </div>
 
-    <div class="center">
-      <button id="buttonList" routerLink="create-publications"> Create new publication </button>
+    <div class="center" *ngIf="isLoggedInservice.isLoggedIn">
+      <button id="buttonList" routerLink="publication-create"> Create new publication </button>
     </div>
   </div>
 

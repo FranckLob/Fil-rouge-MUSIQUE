@@ -1,9 +1,7 @@
 package co.simplon.upskilling.filrougemusique.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +26,6 @@ public class Title {
 
     private String composer;
 
-//    private URL snippet;
     @OneToMany(mappedBy = "title")
     @JsonIgnore
     private Set<Publication> publicationSet = new HashSet<>();
@@ -56,10 +53,6 @@ public class Title {
     public String getComposer() {
         return composer;
     }
-
-//    public URL getSnippet() {
-//        return snippet;
-//    }
 
     public Set<Publication> getPublicationSet() {
         return publicationSet;

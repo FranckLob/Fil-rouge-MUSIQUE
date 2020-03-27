@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { PublicationsListComponent } from './publications-list/publications-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { PublicationCreateComponent } from './publication-create/publication-create.component';
+import { PublicationUpdateComponent } from './publication-update/publication-update.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PublicationCreateComponent } from './publication-create/publication-cre
     LoginComponent,
     PublicationsListComponent,
     TopBarComponent,
-    PublicationCreateComponent
+    PublicationCreateComponent,
+    PublicationUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +35,10 @@ import { PublicationCreateComponent } from './publication-create/publication-cre
       { path: 'sign-up', component: SignUpComponent},    // chemin du path correspond à ce qui est saisi dans "route.param" 
       { path: 'login', component: LoginComponent},
       { path: 'publications-list', component: PublicationsListComponent}, 
-      { path: 'publication-create', component: PublicationCreateComponent}
+      { path: 'publication-create', component: PublicationCreateComponent},
+      { path: 'publication-update', component: PublicationUpdateComponent}
       ]
-    )
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]

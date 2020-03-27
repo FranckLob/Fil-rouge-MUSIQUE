@@ -15,8 +15,8 @@
           <th>Author</th>
           <th>Composer</th>
           <th>Listen</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th *ngIf="isLoggedIn">Edit</th>
+          <th *ngIf="isLoggedIn">Delete</th>
         </tr>
         </thead>
 
@@ -36,10 +36,12 @@
             <a href="{{item?.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td>
-            <button (click)="edit(item)" [routerLink]="['/createPublication']">Editer</button>
+            <button (click)="edit(item)" *ngIf="isLoggedIn && userLogin == item.appUser?.nickName"
+               [routerLink]="['/publications-list', item.id]">
+              Edit  </button>
           </td>
           <td>
-            <button (click)="publicationList.splice(i, 1)">Delete</button>
+            <button (click)="publicationList.splice(i, 1)" *ngIf="isLoggedIn">Delete</button>
           </td>
         </tr>
       </table>

@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
 
   signUpForm;
-  isLoggedIn:Boolean = false;
  
   constructor(private signUpService : SignUpServiceService,
     private formBuilder : FormBuilder,
@@ -36,12 +35,10 @@ export class SignUpComponent implements OnInit {
       user => { alert ('User ' + user.nickName + ' created');
       let key = 'nickName';
       localStorage.setItem(key,JSON.stringify(userToAdd.nickName));
-      this.isLoggedIn = true;
-      // Got to PublicationList with Login provided on top-bar
+
+      // Go to PublicationList with Login provided on top-bar
       this.routerNav.navigate(['publications-list']);},
       err => alert("No creation Error")
-    );
-    
+    ); 
   }
-
 }

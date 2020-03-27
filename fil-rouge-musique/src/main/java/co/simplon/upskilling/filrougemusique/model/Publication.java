@@ -1,7 +1,6 @@
 package co.simplon.upskilling.filrougemusique.model;
 
 import javax.persistence.*;
-import java.net.URL;
 import java.util.Date;
 
 @Entity

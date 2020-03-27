@@ -21,6 +21,4 @@ checkUser(nickName:String) : Observable<User> {
   
   return this.http.get<User>('http://localhost:8080/api/share_music/user/bynickname?nickName='+ nickName);
  }
-
-
 }

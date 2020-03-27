@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PublicationService } from '../publication.service';
 import { Publication} from '../publication';
 import { User } from '../user';
+import { IsLoggedInService } from '../is-logged-in.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -15,9 +18,12 @@ export class PublicationsListComponent implements OnInit {
   publicationList : Publication[];
   userLogin:String;
   isLoggedIn : Boolean = false;
+  publicationToFeedForm : Publication;
 
   constructor(
-    private publicationService: PublicationService
+    private publicationService: PublicationService,
+    private isLoggedInservice: IsLoggedInService,
+    private router : Router
     ) { }
     
 
@@ -25,19 +31,28 @@ export class PublicationsListComponent implements OnInit {
     
     this.publicationService.getPublications().subscribe(
       publications => {this.publicationList = publications.content;
-        // let index=this.publicationList;
-        console.log("XXXXXXXXXXXX");
-        console.log(this.publicationList)},
-      err => console.log('Table not accessible')
+        this.isLoggedInservice.ngOnInit();
+        this.isLoggedIn = this.isLoggedInservice.isLoggedIn 
+        this.userLogin = this.isLoggedInservice.userLogin},
+      err => console.log('Publication Table not accessible')
     );
   }
 
-  // edit(publication) {
-  //   this.publicationService.setPublication(publication);
-  //   console.log('Edit : ' + publication.title);
-  // }
+  onSortUser(){
+    
+    let direction = "ASC";
+    let criteria = "appUser";
+    this.publicationService.getPublicationsSortedByCriteria(criteria,direction).subscribe(
+        publications => {this.publicationList = publications.content;
+          this.isLoggedInservice.ngOnInit();
+          this.isLoggedIn = this.isLoggedInservice.isLoggedIn 
+          this.userLogin = this.isLoggedInservice.userLogin},
+        err => console.log('KO on Sort user')     
+    )
+  }
+    
+  edit(publication) {
+      this.router.navigate(['publication-update'], publication);   
+   }
 
-  // addPublication() {
-  //   console.log("entrée dans addPublication");
-  // }
 }
