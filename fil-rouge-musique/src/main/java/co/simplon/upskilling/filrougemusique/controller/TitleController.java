@@ -1,6 +1,4 @@
 package co.simplon.upskilling.filrougemusique.controller;
-
-import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
 import co.simplon.upskilling.filrougemusique.model.Title;
 import co.simplon.upskilling.filrougemusique.service.TitleService;
 import org.springframework.data.domain.Page;
@@ -8,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("api/title")
@@ -51,6 +48,5 @@ public class TitleController {
     public void deleteTitle(@PathVariable Long titleId) {
         this.titleService.deleteTitle(titleId);
     }
-
 
 }

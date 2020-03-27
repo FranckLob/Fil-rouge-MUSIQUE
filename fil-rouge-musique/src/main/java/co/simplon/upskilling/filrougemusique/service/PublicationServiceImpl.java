@@ -7,12 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class PublicationServiceImpl implements PublicationService {
@@ -33,18 +31,6 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public Page<Publication> getAllPublications(Integer pageNumber, Integer pageSize) {
         return publicationRepository.findAll(PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
-    }
-
-    @Override
-    public Publication getPublicationById(Long publicationId) {
-        Optional<Publication> publicationOptional = publicationRepository.findById(publicationId);
-        if (publicationOptional.isPresent()) {
-            return publicationOptional.get();
-        } else {
-            return null;
-        }
-
-
     }
 
     @Override
@@ -77,48 +63,6 @@ public class PublicationServiceImpl implements PublicationService {
 //        return null;
 //    }
 
-//    @Override
-//
-//    public Page<Publication> getPublicationsSortedBySortCriteriaList(Integer pageNumber,
-//                                                               Integer pageSize,
-//                                                               List<Sort.Order> sortByCriteriaList) {
-//        // By default sort on AppUser nickName
-//        String sortingCriteriaDefault = "nickName";
-//        // By default sorting ascending, but if user explicitely choose desc, then sort descending
-//        Sort.Direction sortingDirectionDefault = Sort.Direction.ASC;
-//
-//        // If sorting criteria matches an aliment field name, then use it for sorting
-//        Field[] fields = Publication.class.getDeclaredFields();
-//        List<String> possibleCriteria = new ArrayList<>();
-//        for (Field field : fields) {
-//            possibleCriteria.add(field.getName().toLowerCase());
-//        }
-//
-//        String sortByChosenCriteria = null;
-//        Sort.Direction sortByChosenDirection = null;
-//        Page<Publication> res = null;
-//
-//        // If we had chosen a criteria list, we would have check each criteria (see below)
-//        for (int i = 0; i < sortByCriteriaList.size(); i++) {
-//            if (!(sortByCriteriaList.isEmpty()) && (possibleCriteria.contains(sortByCriteriaList.get(i)))) {
-//                sortByChosenCriteria = sortByCriteriaList.get(i).getProperty();
-//                sortByChosenDirection = sortByCriteriaList.get(i).getDirection();
-//                if (sortByChosenCriteria != null) {
-//                    if (sortByChosenDirection != null) {
-//                        res = publicationRepository.findAll(PageRequest.of(pageNumber, pageSize,
-//                                Sort.by(sortByChosenDirection, sortByChosenCriteria)));
-//                    } else
-//                        res = publicationRepository.findAll(PageRequest.of(pageNumber, pageSize,
-//                                Sort.by(sortingDirectionDefault, sortByChosenCriteria)));
-//                } else {
-//                    res = publicationRepository.findAll(PageRequest.of(pageNumber, pageSize,
-//                            Sort.by(sortingDirectionDefault, sortingCriteriaDefault)));
-//                }
-//
-//            }
-//        }
-//        return res;
-//    }
     @Override
     public Page<Publication> getPublicationsSortedBySortCriteria(Integer pageNumber,
                                                                  Integer pageSize,

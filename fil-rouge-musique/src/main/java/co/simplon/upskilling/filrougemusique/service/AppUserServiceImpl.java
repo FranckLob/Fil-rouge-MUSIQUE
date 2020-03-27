@@ -6,7 +6,6 @@ import co.simplon.upskilling.filrougemusique.model.AuthorityLevel;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.repository.AppUserRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +35,6 @@ public class AppUserServiceImpl implements AppUserService {
             appUserToBeCreated.setPublicationList(publications);
             // update database
             return appUserRepository.save(appUserToBeCreated);
-
     }
 
     @Override
