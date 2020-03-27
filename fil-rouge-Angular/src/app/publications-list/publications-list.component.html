@@ -14,8 +14,10 @@
           <th class = "short_cell"> <a (click) = 'sortOnAuthor()'  >Author  </a> </th>
           <th class = "short_cell"> <a (click) = 'sortOnComposer()'>Composer</a> </th>
           <th class = "short_cell"> Listen                                       </th>
-          <th class = "short_cell" *ngIf="isLoggedIn"> Edit                      </th>
-          <th class = "short_cell" *ngIf="isLoggedIn"> Delete                    </th>
+          <div *ngIf="isLoggedIn">
+            <th class = "short_cell" > Edit                                      </th>
+            <th class = "short_cell" > Delete                                    </th>
+          </div>
         </tr>
         </thead>
         <tr *ngFor="let item of publicationList; let i = index">
@@ -24,8 +26,8 @@
           <td>{{ item?.date | date : 'dd/MM/yyyy' }}</td>
           <td>{{ item.artwork?.name }}</td>
           <td>{{ item.title?.name }}</td>
-          <td>{{ item.title?.style }}</td>
-          <td>{{ item.title?.type }}</td>
+          <td>{{ item.title?.style.name }}</td>
+          <td>{{ item.title?.type.name }}</td>
           <td>{{ item.title?.author }}</td>
           <td>{{ item.title?.composer }}</td>
           <td>
