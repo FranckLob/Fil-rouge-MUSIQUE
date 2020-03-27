@@ -14,10 +14,14 @@ export class PublicationsListComponent implements OnInit {
 
 
   publicationList : Publication[];
-  userLogin:String;
+  userLogin:string;
   isLoggedIn : Boolean = false;
   publicationToFeedForm : Publication;
   ascendingSort : Boolean = true;
+  lastPage : boolean;
+  firstPage : boolean;
+  currentPage : number;
+
 
   constructor(
     private publicationService: PublicationService,
@@ -27,15 +31,34 @@ export class PublicationsListComponent implements OnInit {
     
 
   ngOnInit() {
-    this.publicationService.getPublications().subscribe(
+    this.getOnePageOfPublications(0);
+  }
+
+  getOnePageOfPublications(pageNumber : number){
+
+    this.publicationService.getPublications(pageNumber).subscribe(
       publications => {this.publicationList = publications.content;
         this.isLoggedInService.ngOnInit();
-        this.isLoggedIn = this.isLoggedInService.isLoggedIn 
-        this.userLogin = this.isLoggedInService.userLogin},
+        this.isLoggedIn = this.isLoggedInService.isLoggedIn;
+        this.userLogin = this.isLoggedInService.userLogin;
+        this.lastPage=publications.last;
+        this.firstPage=publications.first;
+        this.currentPage=publications.pageable.pageNumber;
+      },
       err => console.log('Table not accessible')
     );
   }
 
+  changePagination(movement){
+    if(movement=='forward' && !this.lastPage){
+      this.currentPage=this.currentPage+1;
+      this.getOnePageOfPublications(this.currentPage);
+    }
+    if(movement=='rewind' && !this.firstPage){
+      this.currentPage=this.currentPage-1;
+      this.getOnePageOfPublications(this.currentPage);
+    }
+  }
   
 
   sortOnUser(){

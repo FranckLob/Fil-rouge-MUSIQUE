@@ -30,8 +30,8 @@ export class PublicationService {
     return this.http.put<Publication>(url,publication);
   }
 
-  getPublications() : Observable<any>{
-    return this.http.get <any>('http://localhost:8080/api/publications');
+  getPublications(pageNumber) : Observable<any>{
+    return this.http.get <any>('http://localhost:8080/api/publications?pageNumber='+pageNumber);
   }
 
   getPublicationsSortedByCriteria(criteria, direction):Observable<any> {
