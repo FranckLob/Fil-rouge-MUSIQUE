@@ -5,11 +5,9 @@ import { Publication } from "./publication";
 export interface Title {
     id : number;
     name : string;
-    typeMusic : string;
-    styleMusic : string;
+    type : Type;
+    style : Style;
     author : string;
     composer : string;
     publications : Publication[];
-
-
 }

@@ -1,11 +1,8 @@
 package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.Artist;
-import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.repository.ArtistRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service

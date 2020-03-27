@@ -2,10 +2,8 @@ package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.model.*;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public interface PublicationService {
@@ -18,6 +16,7 @@ public interface PublicationService {
 
     Page<Publication> getAllPublications(Integer pageNumber, Integer pageSize);
 
+
     /**
      * Get the filtered list of publications regarding user
      *
@@ -25,6 +24,7 @@ public interface PublicationService {
      */
 
     Page<Publication> getFilteredPublicationsByAppUser(Long appUserId, Integer pageNumber, Integer pageSize);
+
 
     /**
      * Get the filtered list of publications regarding artist
