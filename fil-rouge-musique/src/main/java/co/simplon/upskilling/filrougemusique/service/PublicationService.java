@@ -18,6 +18,13 @@ public interface PublicationService {
 
 
     /**
+     * Get one publication by its id
+     * @param publicationId
+     * @return
+     */
+    Publication getPublicationById(Long publicationId);
+
+    /**
      * Get the filtered list of publications regarding user
      *
      * @return the filtered list

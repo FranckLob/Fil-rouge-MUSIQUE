@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class PublicationServiceImpl implements PublicationService {
 
@@ -34,6 +33,16 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public Page<Publication> getAllPublications(Integer pageNumber, Integer pageSize) {
         return publicationRepository.findAll(PageRequest.of(returnPageNumber(pageNumber), returnPageSize(pageSize, 10)));
+    }
+
+    @Override
+    public Publication getPublicationById(Long publicationId) {
+        Optional<Publication> publicationOptional = publicationRepository.findById(publicationId);
+        if (publicationOptional.isPresent()) {
+            return publicationOptional.get();
+        } else {
+            return null;
+        }
     }
 
     @Override

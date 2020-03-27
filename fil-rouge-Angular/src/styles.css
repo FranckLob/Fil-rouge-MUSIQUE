@@ -2,12 +2,12 @@
 /* Design général */
 
 
- /* :root {
-    --color-darker: #1b262c;
-    --color-dark: #0f4c75;
+ :root {
+ /*   --color-darker: #254457;
+    --color-dark: #2677ad; */
     --color-lighter: #bbe1fa;
     --color-light: #3282b8;
-  } */
+  } 
    
   * {
     font-family: 'Roboto', Arial, sans-serif;
@@ -39,16 +39,17 @@
   }
   
   
+  
 /* ----------------------------------------------------------------- */
 body {
-    padding: 0 20%;
+    padding: 0 10%;
     text-align: center;
     background-color: var(--color-darker);
 }
 
 .btnlist {
     border: none;
-    background-color: rgba(5, 8, 209, 0.911);
+    background-color: var(--color-dark);
     cursor: pointer;
     display: inline-block;
     color: white;
@@ -61,7 +62,7 @@ body {
 app-welcome {
     margin-top: 100 px;
     border: none;
-    background-color: blue;
+    background-color: var(--color-lighter);
     cursor: pointer;
     border-radius: 6px;
     margin: 15px;
@@ -88,7 +89,7 @@ app-top-bar h1, .btnlist {
 }
 
 app-top-bar h1 {
-    color: #862E67;
+    color: var(--color-lighter);
 }
 
 app-top-bar .btnlist {

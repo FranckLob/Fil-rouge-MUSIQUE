@@ -9,6 +9,7 @@ import { LoginServiceService } from '../login-service.service';
 import { Publication } from '../publication';
 
 
+
 @Component({
   selector: 'app-publication-update',
   templateUrl: './publication-update.component.html',
@@ -71,5 +72,4 @@ export class PublicationUpdateComponent implements OnInit {
     }
   }
   
-
 }

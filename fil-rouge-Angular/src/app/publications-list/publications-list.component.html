@@ -1,28 +1,28 @@
-
 <div class="list">
     
+  <!-- <ul>
+    <li ng-repeat="element in tableau">{{element}}</li>
+  </ul> -->
+
     <section id="publications-view">
       <table>
         <thead>
         <tr>
-          <th>User</th>
-          <th>Artist</th>
-          <th>Date</th>
-          <th class = "long_cell">Artwork</th>
-          <th class="long_cell">Title</th>
-          <th>Style</th>
-          <th>Type</th>
-          <th>Author</th>
-          <th>Composer</th>
-          <th>Listen</th>
-          <th *ngIf="isLoggedIn">Edit</th>
-          <th *ngIf="isLoggedIn">Delete</th>
+          <th class = "short_cell"> <a (click) = 'sortOnUser()'    >User    </a> </th>
+          <th class = "long_cell" > <a (click) = 'sortOnArtist()'  >Artist  </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnDate()'    >Date    </a> </th>
+          <th class = "long_cell" > <a (click) = 'sortOnArtwork()' >Artwork </a> </th>
+          <th class = "long_cell" > <a (click) = 'sortOnTitle()'   >Title   </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnStyle()'   >Style   </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnType()'    >Type    </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnAuthor()'  >Author  </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnComposer()'>Composer</a> </th>
+          <th class = "short_cell"> Listen                                       </th>
+          <th class = "short_cell" *ngIf="isLoggedIn"> Edit                      </th>
+          <th class = "short_cell" *ngIf="isLoggedIn"> Delete                    </th>
         </tr>
         </thead>
-
-       
         <tr *ngFor="let item of publicationList; let i = index">
-
           <td>{{ item.appUser?.nickName }}</td>
           <td>{{ item.artist?.name }} </td>
           <td>{{ item?.date | date : 'dd/MM/yyyy' }}</td>
@@ -33,18 +33,15 @@
           <td>{{ item.title?.author }}</td>
           <td>{{ item.title?.composer }}</td>
           <td>
-            <a href="{{item?.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
+            <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td>
             <button (click)="edit(item)" *ngIf="isLoggedIn && userLogin == item.appUser?.nickName"
-               [routerLink]="['/publications-list', item.id]">
-              Edit  </button>
+                    [routerLink]="['/publications-list', item.id]">Edit</button>
           </td>
           <td>
-            <button (click)="publicationList.splice(i, 1)" *ngIf="isLoggedIn">Delete</button>
+            <button (click)="deletePublication(publicationList[i])" *ngIf="isLoggedIn">Delete</button>
           </td>
         </tr>
       </table>
-    </section>
-  </div>
-  
+      

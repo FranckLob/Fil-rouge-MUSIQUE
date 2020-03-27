@@ -35,9 +35,16 @@ export class PublicationService {
     return this.http.get <any>('http://localhost:8080/api/publications');
   }
 
+
   getPublicationsSortedByCriteria(criteria, direction):Observable<any> {
     let url = 'http://www.localhost:8080/api/publications/sort?sortCriteria=' + criteria + '&sortDirection=' + direction ;
     return this.http.get<any>(url);
   }
+
+  deletePublication(publicationId: number) : Observable<Publication> {
+    console.log(publicationId);
+    return this.http.delete<Publication>('http://localhost:8080/api/publications/' + publicationId);
+  }
+
 
 }
