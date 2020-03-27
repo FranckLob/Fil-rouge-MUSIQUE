@@ -1,6 +1,7 @@
 package co.simplon.upskilling.filrougemusique.service;
 
 import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
+import co.simplon.upskilling.filrougemusique.exception.ExistingEntityException;
 import co.simplon.upskilling.filrougemusique.model.*;
 import co.simplon.upskilling.filrougemusique.repository.PublicationRepository;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PublicationServiceImpl implements PublicationService {
@@ -20,6 +22,7 @@ public class PublicationServiceImpl implements PublicationService {
 
     private ArtworkService artworkService;
     private ArtistService artistService;
+    private TitleService titleService;
 
     public PublicationServiceImpl(PublicationRepository publicationRepository,
                                   ArtworkService artworkService,
@@ -153,19 +156,45 @@ public class PublicationServiceImpl implements PublicationService {
     }
 
     @Override
+    public Publication getPublicationsByAppUserAndArtistAndArtworkAndTitle(AppUser appUser, Artist artist, Artwork artwork, Title title) {
+        Optional<Publication> publicationOptional = publicationRepository.getPublicationsByAppUserAndArtistAndArtworkAndTitle(appUser, artist, artwork, title);
+        if (publicationOptional.isPresent()){
+            return publicationOptional.get();
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public Publication savePublication(Publication publication) throws Exception {
-        if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null) {
-            if (publication.getArtwork() != null && !artworkService.getAllArtworks().contains(publication.getArtwork())) {
-                artworkService.saveArtwork(publication.getArtwork());
-            }
-            // If Artist is provided (not null) and does not exist in Database(not found) => Create Artist
+        if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null){
+             // If Artist is provided (not null) and does not exist in Database(not found) => Create Artist
             if (publication.getArtist() != null) {
                 if (artistService.getArtistByName(publication.getArtist().getName()) == null) {
-                    artistService.createArtist(publication.getArtist());
+                    publication.setArtist(artistService.createArtist(publication.getArtist()));
                 }
+                else {  publication.setArtist(artistService.getArtistByName(publication.getArtist().getName()));}
+            }
+            if (publication.getArtwork() != null) {
+                if (artworkService.getArtworkByName(publication.getArtwork().getName()) == null) {
+                    publication.setArtwork(artworkService.saveArtwork(publication.getArtwork()));
+                }
+                else {  publication.setArtwork(artworkService.getArtworkByName(publication.getArtwork().getName()));}
+            }
+            if (publication.getTitle() != null) {
+                if (titleService.getTitleByName(publication.getTitle().getName()) == null) {
+                    publication.setTitle(titleService.createTitle(publication.getTitle()));
+                }
+                else {  publication.setTitle(titleService.getTitleByName(publication.getTitle().getName()));}
             }
 
-            return publicationRepository.save(publication);
+            //creer slt si pub inexistante
+            if (getPublicationsByAppUserAndArtistAndArtworkAndTitle(publication.getAppUser(),publication.getArtist(),publication.getArtwork(),publication.getTitle()) == null) {
+                return publicationRepository.save(publication);
+            }
+            else {
+                throw new ExistingEntityException("Publication déjà existante");
+            }
         } else {
             throw new MissingEntityException("Au moins un des 3 champs, artiste, album, titre, doit être renseigné.");
         }

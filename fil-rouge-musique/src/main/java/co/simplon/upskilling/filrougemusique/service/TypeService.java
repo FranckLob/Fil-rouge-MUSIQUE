@@ -3,6 +3,8 @@ package co.simplon.upskilling.filrougemusique.service;
 import co.simplon.upskilling.filrougemusique.model.Type;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface TypeService {
 
@@ -20,4 +22,6 @@ public interface TypeService {
      * void
      */
     void deleteType(Long typeToDeleteId);
+
+    List<Type> getAllTypes();
 }

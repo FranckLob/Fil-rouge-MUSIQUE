@@ -27,8 +27,6 @@ export class PublicationService {
     return this.http.get <any>('http://localhost:8080/api/publications');
   }
 
-
-
   // addItem(item: Publication) {
   //   this.items.push(item);
   // }

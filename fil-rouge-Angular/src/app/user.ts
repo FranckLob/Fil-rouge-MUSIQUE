@@ -1,9 +1,9 @@
 import { Publication } from "./publication";
 
 export interface User {
-    id : BigInteger;
-    nickName : String;
-    email : String;
-    authority : String;
+    id : number;
+    nickName : string;
+    email : string;
+    authority : string;
     publicationlist : Publication[];
 }
