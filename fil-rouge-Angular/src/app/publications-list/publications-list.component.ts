@@ -36,6 +36,8 @@ export class PublicationsListComponent implements OnInit {
     );
   }
 
+  
+
   sortOnUser(){
     let direction;
     if(this.ascendingSort){

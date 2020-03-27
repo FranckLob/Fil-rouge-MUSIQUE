@@ -41,35 +41,27 @@ export class PublicationCreateComponent implements OnInit {
 
       // get connected user // if exist update publication with provided data from the form
       this.loginservice.checkUser(this.isLoggedIn.userLogin).subscribe (
-      //paragraphe 1 deb
       userRetrieved => {
         const user = userRetrieved;
-      //paragraphe 2 deb
-    //const userFranck={id:3,nickName:'Franck',email:'franck.lobjois.devweb@gmail.com',authority:null,publicationlist:null};
         let artist= {id:null,name:form.artistName,publicationSet:null};
         if (form.artistName=='') {artist=null};
-       let artwork={id:null,name:form.artworkName,editor:form.artworkEditor,producer:form.artworkProducer,publicationSet:null};
+        let artwork={id:null,name:form.artworkName,editor:form.artworkEditor,producer:form.artworkProducer,publicationSet:null};
         if (form.artworkName=='') {artwork=null};
-    //if (form.titleName=='') {title=null};
-    //const title={id:null,name:form.titleName,typeMusic:type,styleMusic:form.style,author:form.titleAuthor,composer:form.titleComposer,publications:null};
+        //if (form.titleName=='') {title=null};
+        //const title={id:null,name:form.titleName,typeMusic:type,styleMusic:form.style,author:form.titleAuthor,composer:form.titleComposer,publications:null};
         const date=new Date();
         const publication = {id:null,appUser:user,artist:artist,date:date,artwork:artwork,title:null,snippet:form.snippet};
-    //
         this.publicationService.postPublicationObservable(publication).subscribe(
-         value => {
-           this.router.navigate(['publications-list']);
-         },
-        (error : HttpErrorResponse) => {
-          if (error.status==456) { alert ("Artist and/or Artwork and/or Title must be filled")};
-           if (error.status==457) { alert ("Publication still existed")};
+          value => {
+            this.router.navigate(['publications-list']);
+          },
+          (error : HttpErrorResponse) => {
+            if (error.status==456) { alert ("Artist and/or Artwork and/or Title must be filled")};
+            if (error.status==457) { alert ("Publication still existed")};
           }
         )
-    //paragraphe 2 fin
-     }  
-
+      }  
       )
-    //paragraphe 1 fin
-
     }
     err => console.log("User loginLocalStorage not existing in Backend");
   }
