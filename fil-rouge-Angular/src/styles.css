@@ -2,18 +2,18 @@
 /* Design général */
 
  :root {
-    --color-darker: #283841;
-    --color-dark: #125a8a;
+    --color-darker: #254457;
+    --color-dark: #2677ad;
     --color-lighter: #bbe1fa;
     --color-light: #4386b3;
   }
    
   * {
-    /* font-family: 'Roboto', Arial, sans-serif; */
-    /* color: var(--color-light); */
+    font-family: 'Roboto', Arial, sans-serif;
+    color: var(--color-light);
     box-sizing: border-box;
-    /* -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   .container {
@@ -38,16 +38,17 @@
   }
   
   
+  
 /* ----------------------------------------------------------------- */
 body {
-    padding: 0 20%;
+    padding: 0 10%;
     text-align: center;
     background-color: var(--color-darker);
 }
 
 .btnlist {
     border: none;
-    background-color: rgba(5, 8, 209, 0.911);
+    background-color: var(--color-dark);
     cursor: pointer;
     display: inline-block;
     color: white;
@@ -60,7 +61,7 @@ body {
 app-welcome {
     margin-top: 100 px;
     border: none;
-    background-color: blue;
+    background-color: var(--color-lighter);
     cursor: pointer;
     border-radius: 6px;
     margin: 15px;
@@ -87,7 +88,7 @@ app-top-bar h1, .btnlist {
 }
 
 app-top-bar h1 {
-    color: #862E67;
+    color: var(--color-lighter);
 }
 
 app-top-bar .btnlist {

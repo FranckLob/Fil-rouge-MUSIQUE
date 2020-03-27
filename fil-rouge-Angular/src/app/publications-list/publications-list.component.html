@@ -1,53 +1,46 @@
-<div class ="login">
-    <p> Login : </p>  
-    <p> {{ userLogin.nickname }} </p>
-</div>
-
 <div class="list">
     
+  <!-- <ul>
+    <li ng-repeat="element in tableau">{{element}}</li>
+  </ul> -->
+
     <section id="publications-view">
       <table>
         <thead>
         <tr>
-          <th>User</th>
-          <th>Artist</th>
-          <th>Date</th>
-          <th class = "long_cell">Artwork</th>
-          <th class="long_cell">Title</th>
-          <th>Style</th>
-          <th>Type</th>
-          <th>Author</th>
-          <th>Composer</th>
-          <th>Listen</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th class = "short_cell"> <a (click) = 'sortOnUser()'    >User    </a> </th>
+          <th class = "long_cell" > <a (click) = 'sortOnArtist()'  >Artist  </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnDate()'    >Date    </a> </th>
+          <th class = "long_cell" > <a (click) = 'sortOnArtwork()' >Artwork </a> </th>
+          <th class = "long_cell" > <a (click) = 'sortOnTitle()'   >Title   </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnStyle()'   >Style   </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnType()'    >Type    </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnAuthor()'  >Author  </a> </th>
+          <th class = "short_cell"> <a (click) = 'sortOnComposer()'>Composer</a> </th>
+          <th class = "short_cell"> Listen                                       </th>
+          <th class = "short_cell"> Edit                                         </th>
+          <th class = "short_cell"> Delete                                       </th>
         </tr>
         </thead>
-
-       
         <tr *ngFor="let item of publicationList; let i = index">
-
           <td>{{ item.appUser?.nickName }}</td>
           <td>{{ item.artist?.name }}</td>
           <td>{{ item.date | date : 'dd/MM/yyyy' }}</td>
           <td>{{ item.artwork?.name }}</td>
           <td>{{ item.title?.name }}</td>
-          <td>{{ item.title?.styleMusic }}</td>
-          <td>{{ item.title?.typeMusic }}</td>
+          <td>{{ item.title?.style }}</td>
+          <td>{{ item.title?.type }}</td>
           <td>{{ item.title?.author }}</td>
           <td>{{ item.title?.composer }}</td>
-
           <td>
-            <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Ecouter</button></a>
+            <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td>
-            <button (click)="edit(item)" [routerLink]="['/createPublication']">Editer</button>
+            <button (click)="edit(item)" [routerLink]="['/publication-update']">Edit</button>
           </td>
           <td>
-            <button (click)="publicationList.splice(i, 1)">Supprimer</button>
+            <button (click)="deletePublication(publicationList[i])">Delete</button>
           </td>
         </tr>
       </table>
-    </section>
-  </div>
-  
+      

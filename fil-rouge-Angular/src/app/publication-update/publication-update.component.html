@@ -1,0 +1,52 @@
+<h1>UPDATE A PUBLICATION</h1>
+
+<form [formGroup]="publicationForm" (ngSubmit)="onPublicationUpdate(publicationForm.value)">
+
+    <h2>UPDATE AN ARTIST</h2>
+    <div>
+        <label for="artistName">Artist : </label>   
+        <input id="artistName" type="text" formControlName="artistName">
+    </div>
+    <h2>UPDATE AN ARTWORK</h2>
+    <div>
+        <label for="artworkName">Artwork : </label>   
+        <input id="artworkName" type="text" formControlName="artworkName">
+    </div>
+    <div>
+        <label for="artworkEditor">Editor : </label>   
+        <input id="artworkEditor" type="text" formControlName="artworkEditor">
+    </div>
+    <div>
+        <label for="artworkProducer">Producer : </label>   
+        <input id="artworkProducer" type="text" formControlName="artworkProducer">
+    </div>
+    <h2>UPDATE A TITLE</h2>
+    <div>
+        <label for="titleName">Title : </label>   
+        <input id="titleName" type="text" formControlName="titleName">
+    </div>
+    <div>
+        <label for="titleType">Type : </label>   
+        <input id="titleType" type="text" formControlName="titleType">
+    </div>
+    <div>
+        <label for="titleStyle">Style : </label>   
+        <input id="titleStyle" type="text" formControlName="titleStyle">
+    </div>
+    <div>
+        <label for="titleAuthor">Author : </label>   
+        <input id="titleAuthor" type="text" formControlName="titleAuthor">
+    </div>
+    <div>
+        <label for="titleComposer">Composer : </label>   
+        <input id="titleComposer" type="text" formControlName="titleComposer">
+    </div>
+    <h2>UPDATE A SNIPPET</h2>
+    <div>
+        <label for="snippet">Snippet : </label>   
+        <input id="snippet" type="text" formControlName="snippet">
+    </div>
+
+    <button type="submit">Validate</button>
+  
+</form>
