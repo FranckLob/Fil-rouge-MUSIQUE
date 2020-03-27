@@ -5,7 +5,7 @@
       <table>
         <thead>
         <tr>
-          <th> <a (click) = 'onSortUser("userLogin")'> User</a></th>
+          <th>User</th>
           <th>Artist</th>
           <th>Date</th>
           <th class = "long_cell">Artwork</th>
@@ -36,10 +36,9 @@
             <a href="{{item?.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td>
-            <button (click)="edit(item)" routerLink="publication-update" 
-            *ngIf="isLoggedIn && userLogin == item.appUser?.nickName">
-               
-              Edit </button>
+            <button (click)="edit(item)" *ngIf="isLoggedIn && userLogin == item.appUser?.nickName"
+               [routerLink]="['/publications-list', item.id]">
+              Edit  </button>
           </td>
           <td>
             <button (click)="publicationList.splice(i, 1)" *ngIf="isLoggedIn">Delete</button>

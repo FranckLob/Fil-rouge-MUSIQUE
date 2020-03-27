@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
 
   loginForm;
   publications: Publication[];
-  //isLoggedIn: Boolean = false;;
-  // publicationService;
 
   constructor(private forbuilder : FormBuilder,
     private loginService: LoginServiceService,
@@ -34,15 +32,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(login) {
-
-    console.log(login.nickName);
     
     this.loginService.checkUser(login.nickName).subscribe(
       user => {
-        console.log("exists in Backend")
-        console.log(user.nickName);
         //   Save login in Localstorage
-
         let key = 'nickName';
         localStorage.setItem(key,JSON.stringify(user.nickName));
 
@@ -53,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.routerNav.navigate(['publications-list']);      
         },
       // Show error wrong login
-      err => alert('Wrong login')
+      err => alert('Wrong login, please try again')
       );
     
        // clear user creation form once creation completed

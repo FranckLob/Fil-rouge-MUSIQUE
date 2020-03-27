@@ -40,19 +40,4 @@ export class PublicationService {
     return this.http.get<any>(url);
   }
 
-
-
-  // addItem(item: Publication) {
-  //   this.items.push(item);
-  // }
-
-  // setPublication(item: Publication) {
-  //   this.publication = item;
-  // }
-
-  // getPublication() {
-  //   console.log('edit -> ', this.publication.title);
-  //   return this.publication;
-  // }
-
 }

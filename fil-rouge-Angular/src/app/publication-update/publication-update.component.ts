@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { PublicationService} from '../publication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { IsLoggedInService } from '../is-logged-in.service';
 import { LoginServiceService } from '../login-service.service';
+import { Publication } from '../publication';
 
 
 @Component({
@@ -18,19 +20,22 @@ export class PublicationUpdateComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder,
     private publicationService : PublicationService,
+    private route: ActivatedRoute,
     private router : Router,
     private isLoggedIn : IsLoggedInService,
     private loginservice: LoginServiceService) { }
+  
 
   ngOnInit() {
-    this.publicationForm=this.formBuilder.group({
-      id:this.publicationForm.value.id,
+   
+    
+      this.publicationForm=this.formBuilder.group({
       artistName : this.publicationForm.value.artistName,
       artworkName : this.publicationForm.value.artworkName,
       artworkEditor : this.publicationForm.value.artworkEditor,
       artworkProducer : this.publicationForm.value.artworkProducer,
-      titleName : this.publicationForm.value.titleType,
-      titleType : this.publicationForm.value.titleStyle,
+      titleName : this.publicationForm.value.titleName,
+      titleType : this.publicationForm.value.titleType,
       titleStyle : this.publicationForm.value.titleStyle,
       titleAuthor : this.publicationForm.value.titleAuthor,
       titleComposer : this.publicationForm.value.titleComposer,
@@ -50,22 +55,20 @@ export class PublicationUpdateComponent implements OnInit {
           const user = userRetrieved;
           const artist= {id:null,name:form.artistName,publicationSet:null};
           const artwork = {id:null,name:form.artworkName, editor: form.artWorkEditor,producer:form.artworkProducer, publicationSet:null};
-          const title = {id:null,name:form.titleName, type: form.titleType,style:form.titleStyle, author:form.titleAuthor, composer:form.titleComposer,
-          publications:null};
-          const snippet = {snippet:form.snippet};
+          const title = {id:null,name:form.titleName, type: form.titleType,style:form.titleStyle, author:form.titleAuthor, 
+            composer:form.titleComposer, publications:null};
+          const snippet = form.snippet;
           const date=new Date();
-          const publication= {id:form.id,appUser:user,artist:artist,date:date,artwork:artwork,title:title,snippet:snippet};
+          let publication : Publication;
+          publication = {id:form.id,appUser:user,artist:artist,date:date,artwork:artwork,title:title,snippet:snippet};
 
           this.publicationService.putPublicationObservable(publication).subscribe(value => {
-          this.router.navigate(['publication-list']);
+          this.router.navigate(['publications-list']);
         })
         },
         err => console.log("User loginLocalStorage not existing in Backend")
-      );
-      
-      
+      );       
     }
- 
   }
   
 
