@@ -35,7 +35,6 @@ export class PublicationsListComponent implements OnInit {
   }
 
   getOnePageOfPublications(pageNumber : number){
-    console.log('pageNumber'+pageNumber);
 
     this.publicationService.getPublications(pageNumber).subscribe(
       publications => {this.publicationList = publications.content;
@@ -59,10 +58,6 @@ export class PublicationsListComponent implements OnInit {
       this.currentPage=this.currentPage-1;
       this.getOnePageOfPublications(this.currentPage);
     }
-    console.log('apres movement'+movement);
-    console.log('apres lastPage'+this.lastPage);
-    console.log('apres firstpage'+this.firstPage);
-    console.log('apres currentpage'+this.currentPage);
   }
   
 

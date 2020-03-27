@@ -31,7 +31,6 @@ export class PublicationService {
   }
 
   getPublications(pageNumber) : Observable<any>{
-    console.log('http://localhost:8080/api/publications?pageNumber='+pageNumber);
     return this.http.get <any>('http://localhost:8080/api/publications?pageNumber='+pageNumber);
   }
 
