@@ -1,5 +1,6 @@
 package co.simplon.upskilling.filrougemusique.controller;
 
+import co.simplon.upskilling.filrougemusique.exception.ExistingEntityException;
 import co.simplon.upskilling.filrougemusique.exception.MissingEntityException;
 import co.simplon.upskilling.filrougemusique.model.Publication;
 import co.simplon.upskilling.filrougemusique.service.PublicationService;
@@ -50,11 +51,15 @@ public class PublicationController {
     @PostMapping
     public ResponseEntity<Publication> createPublication(@RequestBody Publication newPublication) {
         try {
-            return ResponseEntity.ok(this.publicationService.savePublication(newPublication));
+                return ResponseEntity.ok(this.publicationService.savePublication(newPublication));
         } catch (MissingEntityException e) {
             System.out.println(e.getLocalizedMessage());
             return ResponseEntity.status(456).build();
+        } catch (ExistingEntityException e) {
+            System.out.println(e.getLocalizedMessage());
+            return ResponseEntity.status(457).build();
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }

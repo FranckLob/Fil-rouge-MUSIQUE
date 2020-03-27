@@ -1,9 +1,9 @@
 import { Publication } from "./publication";
 
 export interface Artwork {
-    id : BigInteger;
-    name : String;
-    editor : String;
-    producer : String;
+    id : number;
+    name : string;
+    editor : string;
+    producer : string;
     publicationSet : Publication[];
 }

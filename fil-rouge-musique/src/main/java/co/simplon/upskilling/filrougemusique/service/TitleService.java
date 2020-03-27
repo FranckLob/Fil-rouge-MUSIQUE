@@ -34,4 +34,6 @@ public interface TitleService {
      * @return void
      */
     void deleteTitle(Long titleToDeleteId);
+
+    Title getTitleByName(String titleName);
 }

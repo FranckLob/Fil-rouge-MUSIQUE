@@ -9,5 +9,7 @@ public interface ArtworkService {
 
     List<Artwork> getAllArtworks();
 
+    Artwork getArtworkByName(String artworkName);
+
     Artwork saveArtwork(Artwork artwork);
 }

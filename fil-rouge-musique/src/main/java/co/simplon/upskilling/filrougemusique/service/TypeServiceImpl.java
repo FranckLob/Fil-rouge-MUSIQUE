@@ -4,6 +4,8 @@ import co.simplon.upskilling.filrougemusique.model.Type;
 import co.simplon.upskilling.filrougemusique.repository.TypeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TypeServiceImpl implements TypeService {
     TypeRepository typeRepository;
@@ -21,4 +23,10 @@ public class TypeServiceImpl implements TypeService {
     public void deleteType(Long typeToDeleteId){
         typeRepository.deleteById(typeToDeleteId);
     }
+
+    @Override
+    public List<Type> getAllTypes() {
+        return this.typeRepository.findAll();
+    }
+
 }

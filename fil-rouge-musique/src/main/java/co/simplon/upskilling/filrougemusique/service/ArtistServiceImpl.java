@@ -27,8 +27,9 @@ public class ArtistServiceImpl implements ArtistService {
     @Override
     public Artist createArtist(Artist artist) {
         // If artist already exist => do not create it inside of Artist table
-        if(artistRepository.findById(artist.getId()) == null){
-            artistRepository.save(artist);
+        //if id==null then save
+        if(artist.getId() == null){
+            return artistRepository.save(artist);
         }
         return artist;
     }

@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TitleServiceImpl implements TitleService {
 
@@ -40,4 +42,14 @@ public class TitleServiceImpl implements TitleService {
         titleRepository.deleteById(titleToDeleteId);
     }
 
-}
+    @Override
+    public Title getTitleByName(String titleName) {
+        Optional<Title> titleOptional = titleRepository.findTitleByName(titleName);
+        if (titleOptional.isPresent()){
+            return titleOptional.get();
+        } else {
+            return null;
+        }
+    }
+
+ }

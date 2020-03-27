@@ -117,4 +117,6 @@ public interface PublicationService {
 
     void deletePublication(Long publicationId);
 
+    Publication getPublicationsByAppUserAndArtistAndArtworkAndTitle(AppUser appUser,Artist artist, Artwork artwork, Title title);
+
 }
