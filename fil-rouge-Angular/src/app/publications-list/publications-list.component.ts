@@ -21,7 +21,7 @@ export class PublicationsListComponent implements OnInit {
 
   constructor(
     private publicationService: PublicationService,
-    private isLoggedInService: IsLoggedInService
+    private isLoggedInService: IsLoggedInService,
     private router : Router
     ) { }
     

@@ -124,6 +124,14 @@ public interface PublicationService {
 
     void deletePublication(Long publicationId);
 
+    /**
+     *
+     * @param appUser
+     * @param artist
+     * @param artwork
+     * @param title
+     * @return either publication corresponding to appuser, artist, artwork, title in parameters or null
+     */
     Publication getPublicationsByAppUserAndArtistAndArtworkAndTitle(AppUser appUser,Artist artist, Artwork artwork, Title title);
 
 }
