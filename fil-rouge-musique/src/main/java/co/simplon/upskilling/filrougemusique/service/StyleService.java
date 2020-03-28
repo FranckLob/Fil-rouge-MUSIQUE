@@ -3,6 +3,8 @@ package co.simplon.upskilling.filrougemusique.service;
 import co.simplon.upskilling.filrougemusique.model.Style;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface StyleService {
 
@@ -21,4 +23,6 @@ public interface StyleService {
      * void
      */
     void deleteStyle(Long styleToDeleteId);
+
+    List<Style> getAllStyles();
 }
