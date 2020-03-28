@@ -1,18 +1,18 @@
-<div class = "SignUpPart"> 
-<h1> Sign Up Form </h1>
+<div class="SignUpPart">
+  <h1> Sign Up Form </h1>
 
- <form [formGroup]="signUpForm" (ngSubmit) = "onSubmit(signUpForm.value)">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
     <div class="signUpDiv">
-        <div class="nickName"> 
+      <div class="nickName">
         <label> Nickname : </label>
         <input id="nickName" type="text" placeholder='Nickname' formControlName="nickName">
-        </div>
-        <div class="email">
+      </div>
+      <div class="email">
         <label> Email : </label>
         <input id="email" type="text" placeholder='Email' formControlName="email">
-        </div>
-        <button class= "button" type="submit"> Create </button>
+      </div>
     </div>
+
+    <button class="button" type="submit"> Create </button>
 </form>
 </div>
-
