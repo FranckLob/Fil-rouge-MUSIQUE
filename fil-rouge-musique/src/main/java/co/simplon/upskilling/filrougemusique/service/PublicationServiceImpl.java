@@ -24,10 +24,12 @@ public class PublicationServiceImpl implements PublicationService {
 
     public PublicationServiceImpl(PublicationRepository publicationRepository,
                                   ArtworkService artworkService,
-                                  ArtistService artistService) {
+                                  ArtistService artistService,
+                                  TitleService titleService) {
         this.publicationRepository = publicationRepository;
         this.artworkService = artworkService;
         this.artistService = artistService;
+        this.titleService = titleService;
     }
 
     @Override

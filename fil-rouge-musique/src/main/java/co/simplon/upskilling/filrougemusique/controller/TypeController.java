@@ -1,13 +1,9 @@
 package co.simplon.upskilling.filrougemusique.controller;
 
-import co.simplon.upskilling.filrougemusique.model.Title;
 import co.simplon.upskilling.filrougemusique.model.Type;
-import co.simplon.upskilling.filrougemusique.service.TitleService;
 import co.simplon.upskilling.filrougemusique.service.TypeService;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

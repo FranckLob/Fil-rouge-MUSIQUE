@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IsLoggedInService } from '../is-logged-in.service';
 import { LoginServiceService } from '../login-service.service';
+import { Type } from '../type';
+import { Style } from '../style';
+import { Observable } from 'rxjs';
  
 @Component({
   selector: 'app-publication-create',
@@ -15,11 +18,17 @@ import { LoginServiceService } from '../login-service.service';
 export class PublicationCreateComponent implements OnInit {
 
   publicationForm : FormGroup;
+  typeListObservable : Observable<Type[]>;
+  styleListObservable : Observable<Style[]>;
 
   constructor(private formBuilder : FormBuilder,private publicationService : PublicationService,private router : Router, private isLoggedIn : IsLoggedInService,
     private loginservice: LoginServiceService) { }
 
   ngOnInit() {
+
+      this.typeListObservable=this.publicationService.getTypes();
+      this.styleListObservable=this.publicationService.getStyles();
+
       this.publicationForm=this.formBuilder.group({
       artistName : '',
       artworkName : '',
@@ -47,10 +56,10 @@ export class PublicationCreateComponent implements OnInit {
         if (form.artistName=='') {artist=null};
         let artwork={id:null,name:form.artworkName,editor:form.artworkEditor,producer:form.artworkProducer,publicationSet:null};
         if (form.artworkName=='') {artwork=null};
-        //if (form.titleName=='') {title=null};
-        //const title={id:null,name:form.titleName,typeMusic:type,styleMusic:form.style,author:form.titleAuthor,composer:form.titleComposer,publications:null};
+        let title={id:null,name:form.titleName,type:form.titleType,style:form.titleStyle,author:form.titleAuthor,composer:form.titleComposer,publications:null};
+        if (form.titleName=='') {title=null};
         const date=new Date();
-        const publication = {id:null,appUser:user,artist:artist,date:date,artwork:artwork,title:null,snippet:form.snippet};
+        const publication = {id:null,appUser:user,artist:artist,date:date,artwork:artwork,title:title,snippet:form.snippet};
         this.publicationService.postPublicationObservable(publication).subscribe(
           value => {
             this.router.navigate(['publications-list']);
