@@ -86,7 +86,7 @@ h1 {
 
 .nickName,
 .email {
-  border: solid 1px;
+  /* border: solid 1px; */
   text-align: right;
   width: 35%;
   margin-left: 25%;
