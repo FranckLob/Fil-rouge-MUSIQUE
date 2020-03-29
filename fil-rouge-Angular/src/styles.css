@@ -2,107 +2,154 @@
 /* Design général */
 
 
- :root {
-    --color-darker: #254457; 
-    --color-dark: #2677ad; 
-    --color-lighter: #bbe1fa;
-    --color-light: #3282b8;
-  } 
-   
-  * {
-    font-family: 'Roboto', Arial, sans-serif;
-    color: var(--color-light);
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-    width: 90%;
-    margin: auto;
-    /* font-family: 'Roboto', sans-serif; */
-  }
-  
-  h1,
-  h2,
-  h3 {
-    font-family: 'Big Shoulders Text', cursive;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2.5em;
-  }
-  
-  
-  
-/* ----------------------------------------------------------------- */
-body {
-    padding: 0 10%;
-    text-align: center;
-    background-color: var(--color-darker);
+:root {
+  --color-darker: #254457;
+  --color-dark: #2677ad;
+  --color-lighter: #bbe1fa;
+  --color-light: #3282b8;
 }
 
-.btnlist {
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    color: black;
-    font-weight: bold;
-    border-radius: 6px;
-    margin: 15px;
-    text-align: center;
+* {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: var(--color-light);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-app-welcome {
-    margin-top: 100 px;
-    border: none;
-    background-color: var(--color-darker);
-    cursor: pointer;
-    border-radius: 6px;
-    margin: 15px;
-    text-align: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  /* font-family: 'Roboto', sans-serif; */
 }
-.welcome-choice {
- display: flex;
- justify-content: space-between;
- flex-direction: row;
- 
- 
+
+h1,
+h2,
+h3 {
+  font-family: 'Big Shoulders Text', cursive;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+.flexSection {
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 7%;
+}
+
+.leftSide {
+  margin-left: 1%;
+}
+
+.rightSide {
+  margin-right: 1%;
+}
+
+.createArtist {
+  /* border: solid 1px; */
+  margin-bottom: 7%;
+  text-align: right;
+}
+
+.createArtwork {
+  /* border: solid 1px; */
+  text-align: right;
+}
+
+.createTitle {
+  /* border: solid 1px; */
+  margin-bottom: 7%;
+  text-align: right;
+}
+
+.createSnippet {
+  /* border: solid 1px; */
+  text-align: right;
+}
+
+.signUpDiv {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 7%;
 }
 
 .nickName,
-.email{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    margin: 2%;
+.email {
+  /* border: solid 1px; */
+  text-align: right;
+  width: 50%;
+  margin-left: 25%;
+}
+
+
+/* ----------------------------------------------------------------- */
+body {
+  padding: 0 10%;
+  text-align: center;
+  background-color: var(--color-darker);
+}
+
+.btnlist {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  margin: 15px;
+  text-align: center;
+}
+
+app-welcome {
+  margin-top: 100 px;
+  border: none;
+  background-color: var(--color-darker);
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 15px;
+  text-align: center;
+}
+
+.welcome-choice {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+
 }
 
 /* Design top-bar */
-app-top-bar h1, .btnlist {
-    font-family: 'Bree Serif', serif;
-    text-align: center;
+app-top-bar h1,
+.btnlist {
+  font-family: 'Bree Serif', serif;
+  text-align: center;
 }
 
 app-top-bar h1 {
-    color: var(--color-lighter);
+  color: var(--color-lighter);
 }
 
 app-top-bar .btnlist {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 app-top-bar div {
-    text-align: center;
+  text-align: center;
 }
 
-.login>p{
-  color: blue ;
+.login>p {
+  color: var(--color-lighter);
   font-style: italic;
   font-weight: 700;
 }

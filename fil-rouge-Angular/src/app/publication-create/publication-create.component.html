@@ -1,29 +1,39 @@
-<h1>CREATE A PUBLICATION</h1>
+<h2>CREATE A PUBLICATION</h2>
 
 <form [formGroup]="publicationForm" (ngSubmit)="onNewPublication(publicationForm.value)">
-
-    <h2>CREATE AN ARTIST</h2>
-    <div>
-        <label for="artistName">Artist : </label>   
+<section class="flexSection">
+  <div class="leftSide">
+    <div class="createArtist">
+      <h3>CREATE AN ARTIST</h3>
+      <div>
+        <label for="artistName">Artist : </label>
         <input id="artistName" type="text" formControlName="artistName">
+      </div>
     </div>
-    <h2>CREATE AN ARTWORK</h2>
-    <div>
-        <label for="artworkName">Artwork : </label>   
+    <div class="createArtwork">
+      <h3>CREATE AN ARTWORK</h3>
+      <div>
+        <label for="artworkName">Artwork : </label>
         <input id="artworkName" type="text" formControlName="artworkName">
-    </div>
-    <div>
-        <label for="artworkEditor">Editor : </label>   
+      </div>
+      <div>
+        <label for="artworkEditor">Editor : </label>
         <input id="artworkEditor" type="text" formControlName="artworkEditor">
-    </div>
-    <div>
-        <label for="artworkProducer">Producer : </label>   
+      </div>
+      <div>
+        <label for="artworkProducer">Producer : </label>
         <input id="artworkProducer" type="text" formControlName="artworkProducer">
+      </div>
     </div>
-    <h2>CREATE A TITLE</h2>
-    <div>
-        <label for="titleName">Title : </label>   
+  </div>
+
+  <div class="rightSide">
+    <div class="createTitle">
+      <h3>CREATE A TITLE</h3>
+      <div>
+        <label for="titleName">Title : </label>
         <input id="titleName" type="text" formControlName="titleName">
+
     </div>
     <div>
         <label for="titleStyle">Style : </label>
@@ -40,17 +50,22 @@
     <div>
         <label for="titleAuthor">Author : </label>   
         <input id="titleAuthor" type="text" formControlName="titleAuthor">
-    </div>
-    <div>
-        <label for="titleComposer">Composer : </label>   
+      </div>
+      <div>
+        <label for="titleComposer">Composer : </label>
         <input id="titleComposer" type="text" formControlName="titleComposer">
+      </div>
     </div>
-    <h2>ADD A SNIPPET</h2>
-    <div>
-        <label for="snippet">Snippet : </label>   
+    <div class="createSnippet">
+      <h3>ADD A SNIPPET</h3>
+      <div>
+        <label for="snippet">Snippet : </label>
         <input id="snippet" type="text" formControlName="snippet">
+      </div>
     </div>
+  </div>
+</section>
 
-    <button type="submit">Validate</button>
-  
+  <button type="submit">Validate</button>
+
 </form>
