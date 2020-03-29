@@ -1,5 +1,5 @@
 <div class="SignUpPart">
-  <h1> Sign Up Form </h1>
+  <h2> Sign Up Form </h2>
 
   <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
     <div class="signUpDiv">
@@ -9,7 +9,7 @@
       </div>
       <div class="email">
         <label> Email : </label>
-        <input id="email" type="text" placeholder='Email' formControlName="email">
+        <input id="email" type="text" placeholder='Email' formControlName="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
       </div>
     </div>
 
