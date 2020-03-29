@@ -4,6 +4,8 @@ import co.simplon.upskilling.filrougemusique.model.Style;
 import co.simplon.upskilling.filrougemusique.repository.StyleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StyleServiceImpl implements StyleService {
 
@@ -21,5 +23,10 @@ public class StyleServiceImpl implements StyleService {
     @Override
     public void deleteStyle(Long styleToDeleteId) {
         styleRepository.deleteById(styleToDeleteId);
+    }
+
+    @Override
+    public List<Style> getAllStyles() {
+        return this.styleRepository.findAll();
     }
 }

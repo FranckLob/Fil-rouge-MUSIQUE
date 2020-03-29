@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Publication} from './publication';
+import {Type} from './type';
+import { Style } from './style';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +44,14 @@ export class PublicationService {
   deletePublication(publicationId: number) : Observable<Publication> {
     console.log(publicationId);
     return this.http.delete<Publication>('http://localhost:8080/api/publications/' + publicationId);
+  }
+
+  getTypes() : Observable<Type[]> {
+    return this.http.get<Type[]>('http://localhost:8080/api/type');
+  }
+
+  getStyles() : Observable<Style[]> {
+    return this.http.get<Style[]>('http://localhost:8080/api/style');
   }
 
 }
