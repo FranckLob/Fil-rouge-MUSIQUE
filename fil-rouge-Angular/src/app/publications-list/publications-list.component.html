@@ -32,8 +32,8 @@
             <a href="{{item.snippet}}" target="_blank"> <button type="button" value="Bouton"> Listen</button></a>
           </td>
           <td *ngIf="isLoggedIn">
-            <button (click)="edit(item)" *ngIf="userLogin == item.appUser?.nickName"
-                    [routerLink]="['/publications-list', item.id]">Edit</button>
+            <button *ngIf="userLogin == item.appUser?.nickName"
+                    [routerLink]="['publication-update', item.id]">Edit</button>
           </td>
           <td *ngIf="isLoggedIn">
             <button (click)="deletePublication(publicationList[i])" *ngIf="userLogin == item.appUser?.nickName">Delete</button>

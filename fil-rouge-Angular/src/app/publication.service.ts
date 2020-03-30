@@ -28,7 +28,7 @@ export class PublicationService {
    * Update a Publication for considered user/owner
    */
   putPublicationObservable(publication : Publication) : Observable<Publication> {
-    const url='http://localhost:8080/api/publications/'+ publication.id;
+    const url='http://localhost:8080/api/publications';
     return this.http.put<Publication>(url,publication);
   }
 
@@ -52,6 +52,10 @@ export class PublicationService {
 
   getStyles() : Observable<Style[]> {
     return this.http.get<Style[]>('http://localhost:8080/api/style');
+  }
+
+  getOnePublication(publicationId: number) : Observable<Publication> {
+    return this.http.get<Publication>('http://localhost:8080/api/publications/' + publicationId);
   }
 
 }

@@ -66,39 +66,33 @@ public class PublicationController {
     }
 
     @PutMapping
-    public ResponseEntity<Publication> updatePublication (@RequestBody Publication publicationToUpdate) {
-        try {
-            return ResponseEntity.ok(this.publicationService.savePublication(publicationToUpdate));
-        } catch (MissingEntityException e) {
-            System.out.println(e.getLocalizedMessage());
-            return ResponseEntity.status(456).build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    @PutMapping("/{publicationId}")
-    public ResponseEntity<Publication> updatePublication(@RequestBody Publication publicationToUpdate,
-                                                         @PathVariable Long publicationId) {
+    public ResponseEntity<Publication> updatePublication(@RequestBody Publication publicationToUpdate) {
         try {
             Publication publicationRetrieved = publicationService.getPublicationById(publicationToUpdate.getId());
             if (publicationRetrieved !=null) {
-                return ResponseEntity.ok(this.publicationService.savePublication(publicationRetrieved));
+                return ResponseEntity.ok(this.publicationService.savePublication(publicationToUpdate));
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
         } catch (MissingEntityException e) {
             System.out.println(e.getLocalizedMessage());
             return ResponseEntity.status(456).build();
+        } catch (ExistingEntityException e) {
+            System.out.println(e.getLocalizedMessage());
+            return ResponseEntity.status(457).build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
 
-
-
     @DeleteMapping("/{publicationId}")
     public void deletePublication(@PathVariable Long publicationId) {
         this.publicationService.deletePublication(publicationId);
     }
+
+    @GetMapping("/{publicationId}")
+    public Publication getPublicationById(@PathVariable Long publicationId) {
+         return this.publicationService.getPublicationById(publicationId);
+    }
+
 }

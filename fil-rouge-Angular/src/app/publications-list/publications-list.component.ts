@@ -246,9 +246,4 @@ export class PublicationsListComponent implements OnInit {
       }
     }
 
-  edit(publication) {
-      this.router.navigate(['publication-update'], publication);   
-   }
-
-
 }
