@@ -1,6 +1,6 @@
 <h1>UPDATE A PUBLICATION</h1>
 
-<form [formGroup]="publicationForm" (ngSubmit)="onPublicationUpdate(publicationForm.value)">
+<form *ngIf="publicationForm" [formGroup]="publicationForm" (ngSubmit)="onPublicationUpdate(publicationForm.value)">
 
     <h2>UPDATE AN ARTIST</h2>
     <div>

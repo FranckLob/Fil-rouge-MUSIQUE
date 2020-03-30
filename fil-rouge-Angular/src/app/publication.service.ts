@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Publication} from './publication';
+import {Type} from './type';
+import { Style } from './style';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,7 @@ export class PublicationService {
    * Update a Publication for considered user/owner
    */
   putPublicationObservable(publication : Publication) : Observable<Publication> {
-    const url='http://localhost:8080/api/publications/'+ publication.id;
+    const url='http://localhost:8080/api/publications';
     return this.http.put<Publication>(url,publication);
   }
 
@@ -42,6 +44,18 @@ export class PublicationService {
   deletePublication(publicationId: number) : Observable<Publication> {
     console.log(publicationId);
     return this.http.delete<Publication>('http://localhost:8080/api/publications/' + publicationId);
+  }
+
+  getTypes() : Observable<Type[]> {
+    return this.http.get<Type[]>('http://localhost:8080/api/type');
+  }
+
+  getStyles() : Observable<Style[]> {
+    return this.http.get<Style[]>('http://localhost:8080/api/style');
+  }
+
+  getOnePublication(publicationId: number) : Observable<Publication> {
+    return this.http.get<Publication>('http://localhost:8080/api/publications/' + publicationId);
   }
 
 }

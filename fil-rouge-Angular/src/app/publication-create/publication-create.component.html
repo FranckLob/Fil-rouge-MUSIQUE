@@ -33,17 +33,24 @@
       <div>
         <label for="titleName">Title : </label>
         <input id="titleName" type="text" formControlName="titleName">
-      </div>
-      <div>
-        <label for="titleType">Type : </label>
-        <input id="titleType" type="text" formControlName="titleType">
-      </div>
-      <div>
+
+
+    </div>
+    <div>
         <label for="titleStyle">Style : </label>
-        <input id="titleStyle" type="text" formControlName="titleStyle">
-      </div>
-      <div>
-        <label for="titleAuthor">Author : </label>
+        <select id="titleStyle" type="text" formControlName="titleStyle">
+            <option *ngFor="let style of styleListObservable | async" [ngValue]="style">{{style.style}}</option>
+        </select>
+    </div>
+    <div>
+        <label for="titleType">Type : </label>
+        <select id="titleType" type="text" formControlName="titleType">
+            <option *ngFor="let type of typeListObservable | async" [ngValue]="type">{{type.type}}</option>
+        </select>
+    </div>
+    <div>
+        <label for="titleAuthor">Author : </label>   
+
         <input id="titleAuthor" type="text" formControlName="titleAuthor">
       </div>
       <div>

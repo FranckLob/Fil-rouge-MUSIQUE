@@ -36,7 +36,7 @@ import { PublicationUpdateComponent } from './publication-update/publication-upd
       { path: 'login', component: LoginComponent},
       { path: 'publications-list', component: PublicationsListComponent}, 
       { path: 'publication-create', component: PublicationCreateComponent},
-      { path: 'publication-update', component: PublicationUpdateComponent}
+      { path: 'publications-list/publication-update/:publicationId', component: PublicationUpdateComponent}
       ]
     ),
   ],

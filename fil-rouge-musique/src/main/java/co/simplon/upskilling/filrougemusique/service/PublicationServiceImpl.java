@@ -24,10 +24,12 @@ public class PublicationServiceImpl implements PublicationService {
 
     public PublicationServiceImpl(PublicationRepository publicationRepository,
                                   ArtworkService artworkService,
-                                  ArtistService artistService) {
+                                  ArtistService artistService,
+                                  TitleService titleService) {
         this.publicationRepository = publicationRepository;
         this.artworkService = artworkService;
         this.artistService = artistService;
+        this.titleService = titleService;
     }
 
     @Override
@@ -135,7 +137,7 @@ public class PublicationServiceImpl implements PublicationService {
     public Publication savePublication(Publication publication) throws Exception {
         if (publication.getArtist() != null || publication.getArtwork() != null || publication.getTitle() != null){
              // If Artist is provided (not null) and does not exist in Database(not found) => Create Artist
-            if (publication.getArtist() != null) {
+                if (publication.getArtist() != null) {
                 if (artistService.getArtistByName(publication.getArtist().getName()) == null) {
                     publication.setArtist(artistService.createArtist(publication.getArtist()));
                 }
