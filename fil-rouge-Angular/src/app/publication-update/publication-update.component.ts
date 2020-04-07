@@ -7,6 +7,9 @@ import { IsLoggedInService } from '../is-logged-in.service';
 import { LoginServiceService } from '../login-service.service';
 import { Publication } from '../publication';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Type } from '../type';
+import { Style } from '../style';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-publication-update',
@@ -17,6 +20,8 @@ export class PublicationUpdateComponent implements OnInit {
 
   publicationForm : FormGroup;
   publicationId;
+  typeListObservable : Observable<Type[]>;
+  styleListObservable : Observable<Style[]>;
 
   constructor(private formBuilder : FormBuilder,
     private publicationService : PublicationService,
@@ -32,17 +37,41 @@ export class PublicationUpdateComponent implements OnInit {
       this.publicationId = params.get('publicationId');
       this.publicationService.getOnePublication(this.publicationId).subscribe(
       value => {  
+     //
+     let artistToEditName;
+     if (value.artist != null)
+      { artistToEditName = value.artist.name}
+      else 
+      {artistToEditName = ''}
+     //
+     let artworkToEdit;
+     if (value.artwork != null)
+      { artworkToEdit = {id:null,name:value.artwork.name, editor: value.artwork.editor,producer:value.artwork.producer, publicationSet:null}}
+      else 
+      {artworkToEdit = {id:null,name:'', editor: '',producer:'', publicationSet:null}}
+      // OU
+     // var artworkToEditName : string
+     // if (value.artwork != null) {artworkToEditName=value.artwork.name} else {artworkToEditName=''};
+     let titleToEdit;
+     if (value.title != null)
+      { titleToEdit = {id:null,name:value.title.name, type: value.title.type.type,style:value.title.style.style, author:value.title.author, composer:value.title.composer, publications:null};}
+      else 
+      {titleToEdit = {id:null,name:'', type: '',style:'', author:'', composer:'', publications:null}}
+        console.log(titleToEdit.style);
+      this.typeListObservable=this.publicationService.getTypes();
+      this.styleListObservable=this.publicationService.getStyles();
+     
       this.publicationForm=this.formBuilder.group({
-      artistName : value.artist.name,
-      artworkName : '',
-      artworkEditor : '',
-      artworkProducer : '',
-      titleName : '',
-      titleType : '',
-      titleStyle : '',
-      titleAuthor : '',
-      titleComposer : '',
-      snippet : ''  
+      artistName : artistToEditName,
+      artworkName : artworkToEdit.name,
+      artworkEditor : artworkToEdit.editor,
+      artworkProducer : artworkToEdit.producer,
+      titleName : titleToEdit.name,
+      titleStyle : titleToEdit.style,
+      titleType : titleToEdit.type,
+      titleAuthor : titleToEdit.author,
+      titleComposer : titleToEdit.composer,
+      snippet : value.snippet  
       })
       })
     })

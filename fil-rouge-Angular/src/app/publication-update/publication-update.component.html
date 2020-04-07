@@ -1,52 +1,73 @@
-<h1>UPDATE A PUBLICATION</h1>
+<h2>UPDATE A PUBLICATION</h2>
 
 <form *ngIf="publicationForm" [formGroup]="publicationForm" (ngSubmit)="onPublicationUpdate(publicationForm.value)">
-
-    <h2>UPDATE AN ARTIST</h2>
-    <div>
-        <label for="artistName">Artist : </label>   
+<section class="flexSection">
+  <div class="leftSide">
+    <div class="createArtist">
+      <h3>UPDATE AN ARTIST</h3>
+      <div>
+        <label for="artistName">Artist : </label>
         <input id="artistName" type="text" formControlName="artistName">
+      </div>
     </div>
-    <h2>UPDATE AN ARTWORK</h2>
-    <div>
-        <label for="artworkName">Artwork : </label>   
+    <div class="createArtwork">
+      <h3>CREATE AN ARTWORK</h3>
+      <div>
+        <label for="artworkName">Artwork : </label>
         <input id="artworkName" type="text" formControlName="artworkName">
-    </div>
-    <div>
-        <label for="artworkEditor">Editor : </label>   
+      </div>
+      <div>
+        <label for="artworkEditor">Editor : </label>
         <input id="artworkEditor" type="text" formControlName="artworkEditor">
-    </div>
-    <div>
-        <label for="artworkProducer">Producer : </label>   
+      </div>
+      <div>
+        <label for="artworkProducer">Producer : </label>
         <input id="artworkProducer" type="text" formControlName="artworkProducer">
+      </div>
     </div>
-    <h2>UPDATE A TITLE</h2>
-    <div>
-        <label for="titleName">Title : </label>   
+  </div>
+
+  <div class="rightSide">
+    <div class="createTitle">
+      <h3>UPDATE A TITLE</h3>
+      <div>
+        <label for="titleName">Title : </label>
         <input id="titleName" type="text" formControlName="titleName">
+
+
     </div>
     <div>
-        <label for="titleType">Type : </label>   
-        <input id="titleType" type="text" formControlName="titleType">
+        <label for="titleStyle">Style : </label>
+        <select id="titleStyle" type="text" formControlName="titleStyle">
+            <option *ngFor="let style of styleListObservable | async" [ngValue]="style">{{style.style}}</option>
+        </select>
     </div>
     <div>
-        <label for="titleStyle">Style : </label>   
-        <input id="titleStyle" type="text" formControlName="titleStyle">
+        <label for="titleType">Type : </label>
+        <select id="titleType" type="text" formControlName="titleType">
+            <option *ngFor="let type of typeListObservable | async" [ngValue]="type">{{type.type}}</option>
+        </select>
     </div>
     <div>
         <label for="titleAuthor">Author : </label>   
-        <input id="titleAuthor" type="text" formControlName="titleAuthor">
-    </div>
-    <div>
-        <label for="titleComposer">Composer : </label>   
-        <input id="titleComposer" type="text" formControlName="titleComposer">
-    </div>
-    <h2>UPDATE A SNIPPET</h2>
-    <div>
-        <label for="snippet">Snippet : </label>   
-        <input id="snippet" type="text" formControlName="snippet">
-    </div>
 
-    <button type="submit">Validate</button>
-  
+        <input id="titleAuthor" type="text" formControlName="titleAuthor">
+      </div>
+      <div>
+        <label for="titleComposer">Composer : </label>
+        <input id="titleComposer" type="text" formControlName="titleComposer">
+      </div>
+    </div>
+    <div class="createSnippet">
+      <h3>UPDATE A SNIPPET</h3>
+      <div>
+        <label for="snippet">Snippet : </label>
+        <input id="snippet" type="text" formControlName="snippet">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <button type="submit">Validate</button>
+
 </form>
