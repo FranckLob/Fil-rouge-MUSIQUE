@@ -37,9 +37,9 @@
 
     </div>
     <div>
-        <label for="titleStyle">Style : </label>
+        <label for="titleStyle">Style : </label>  
         <select id="titleStyle" type="text" formControlName="titleStyle">
-            <option *ngFor="let style of styleListObservable | async" [ngValue]="style">{{style.style}}</option>
+            <option *ngFor="let style of styleListObservable | async" [ngValue]="style" [selected]="titleToEdit.style==style.style ? false : true ">{{style.style}}</option>
         </select>
     </div>
     <div>

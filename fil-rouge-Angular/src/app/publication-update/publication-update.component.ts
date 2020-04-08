@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Type } from '../type';
 import { Style } from '../style';
 import { Observable } from 'rxjs';
+import { Title } from '../title';
 
 @Component({
   selector: 'app-publication-update',
@@ -22,6 +23,7 @@ export class PublicationUpdateComponent implements OnInit {
   publicationId;
   typeListObservable : Observable<Type[]>;
   styleListObservable : Observable<Style[]>;
+  titleToEdit;
 
   constructor(private formBuilder : FormBuilder,
     private publicationService : PublicationService,
@@ -52,12 +54,12 @@ export class PublicationUpdateComponent implements OnInit {
       // OU
      // var artworkToEditName : string
      // if (value.artwork != null) {artworkToEditName=value.artwork.name} else {artworkToEditName=''};
-     let titleToEdit;
+     //let titleToEdit;
      if (value.title != null)
-      { titleToEdit = {id:null,name:value.title.name, type: value.title.type.type,style:value.title.style.style, author:value.title.author, composer:value.title.composer, publications:null};}
+      { this.titleToEdit = {id:null,name:value.title.name, type: value.title.type.type,style:value.title.style.style, author:value.title.author, composer:value.title.composer, publications:null};}
       else 
-      {titleToEdit = {id:null,name:'', type: '',style:'', author:'', composer:'', publications:null}}
-        console.log(titleToEdit.style);
+      {this.titleToEdit = {id:null,name:'', type: '',style:'', author:'', composer:'', publications:null}}
+        console.log(this.titleToEdit.style);
       this.typeListObservable=this.publicationService.getTypes();
       this.styleListObservable=this.publicationService.getStyles();
      
@@ -66,11 +68,11 @@ export class PublicationUpdateComponent implements OnInit {
       artworkName : artworkToEdit.name,
       artworkEditor : artworkToEdit.editor,
       artworkProducer : artworkToEdit.producer,
-      titleName : titleToEdit.name,
-      titleStyle : titleToEdit.style,
-      titleType : titleToEdit.type,
-      titleAuthor : titleToEdit.author,
-      titleComposer : titleToEdit.composer,
+      titleName : this.titleToEdit.name,
+      titleStyle : this.titleToEdit.style,
+      titleType : this.titleToEdit.type,
+      titleAuthor : this.titleToEdit.author,
+      titleComposer : this.titleToEdit.composer,
       snippet : value.snippet  
       })
       })
